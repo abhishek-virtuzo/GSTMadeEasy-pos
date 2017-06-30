@@ -1,0 +1,76 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.ActiveSIM">
+
+        <TextView
+            android:id="@+id/txtCurrentSIMNumber"
+            android:layout_width="wrap_content"
+            android:text="Current SIM Number"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/etCurrentSIMNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_below="@+id/txtCurrentSIMNumber"/>
+
+        <TextView
+            android:id="@+id/txtCurrentMobileNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Mobile Number"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/etCurrentSIMNumber"/>
+
+        <EditText
+            android:id="@+id/etCurrentMobileNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_below="@+id/txtCurrentMobileNumber"/>
+
+
+        <TextView
+            android:id="@+id/txtNewSIMNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New SIM Number"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/etCurrentMobileNumber"/>
+
+        <EditText
+            android:id="@+id/etNewSIMNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_below="@+id/txtNewSIMNumber"/>
+
+
+
+        <Button
+            android:id="@+id/btnReplace"
+            android:layout_width="wrap_content"
+            android:text="Replace"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/etNewSIMNumber"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+</ScrollView>

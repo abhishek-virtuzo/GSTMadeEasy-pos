@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.ActiveSIM">
+
+        <TextView
+            android:id="@+id/txtTariff"
+            android:layout_width="wrap_content"
+            android:text="Tariff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/spinTariff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/AppTheme1"
+            android:layout_below="@+id/txtTariff">
+        </Spinner>
+
+        <TextView
+            android:id="@+id/txAmountToPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount To Pay"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/spinTariff"/>
+
+        <EditText
+            android:id="@+id/etAmountToPay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="0.00"
+            android:textColor="@android:color/black"
+            android:backgroundTint="@android:color/black"
+            android:enabled="false"
+            android:layout_below="@+id/txAmountToPay"/>
+
+        <TextView
+            android:id="@+id/txtSIMCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIM CARD"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/etAmountToPay"/>
+
+        <EditText
+            android:id="@+id/etSimCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_below="@+id/txtSIMCard"/>
+        <TextView
+            android:id="@+id/txtPhoneToPort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PHONE TO PORT"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/etSimCard"/>
+
+        <EditText
+            android:id="@+id/etPhoneToPort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtPhoneToPort"/>
+
+        <TextView
+            android:id="@+id/txtPin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PIN"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/etPhoneToPort"/>
+
+        <EditText
+            android:id="@+id/etPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_below="@+id/txtPin"/>
+
+        <TextView
+            android:id="@+id/txtZIPCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZIP Code"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/etPin"/>
+
+        <EditText
+            android:id="@+id/etZipCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_below="@+id/txtZIPCode"/>
+
+        <TextView
+            android:id="@+id/txAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ACCOUNT #"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/etZipCode"/>
+
+        <EditText
+            android:id="@+id/etAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txAccount"/>
+
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/etAccount"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:layout_below="@+id/txtEmail"/>
+
+        <Button
+            android:id="@+id/btnaActiveUsingAccountBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Active Using Account Balance"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:background="@android:color/holo_blue_light"
+            android:layout_below="@+id/etEmail"/>
+
+    </RelativeLayout>
+</ScrollView>

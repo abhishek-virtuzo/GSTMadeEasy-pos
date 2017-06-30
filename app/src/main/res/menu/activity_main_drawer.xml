@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/activate_sim"
+            android:icon="@drawable/sim"
+            android:title="Activate SIM" />
+        <item
+            android:id="@+id/portin"
+            android:icon="@drawable/sim"
+            android:title="PortIn" />
+        <item
+            android:id="@+id/sim_replacement"
+            android:icon="@drawable/sim"
+            android:title="SIM Replacement" />
+
+    </group>
+
+
+
+</menu>

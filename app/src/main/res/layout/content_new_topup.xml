@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_margin="10dp"
+    tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.NewTopup">
+    
+    <TextView
+        android:id="@+id/txtChargeMsg"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:text="You will be additionally 3% charged if you pay via PayPal"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txtChargedAmount"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:layout_below="@+id/txtChargeMsg"
+        android:padding="5dp"
+        android:text="Charged Amount"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txtUSD"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:layout_below="@+id/txtChargeMsg"
+        android:text="USD"
+        android:layout_toLeftOf="@+id/ChargedAmount"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/ChargedAmount"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:layout_below="@+id/txtChargeMsg"
+        android:layout_alignParentRight="true"
+        android:text="Amount"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/btnCancle"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:layout_below="@+id/txtChargedAmount"
+        android:background="@android:color/holo_blue_dark"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        android:layout_marginLeft="20dp"
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/btnPayPal"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:background="@drawable/paypal"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/txtChargedAmount"
+        android:layout_toRightOf="@+id/btnCancle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

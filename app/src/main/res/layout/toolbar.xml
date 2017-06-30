@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AH Prepaid"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:shadowColor="@color/colorPrimary"
+            android:background="?attr/colorPrimary"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"/>
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

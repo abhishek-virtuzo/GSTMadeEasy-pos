@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.DashBoardScreen">
+
+        <include
+            android:id="@+id/toolbar_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/toolbar">
+        </include>
+
+        <FrameLayout
+            android:id="@+id/frameText"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_margin="5dp"
+            android:layout_below="@id/toolbar_dashboard"
+            android:background="@android:color/darker_gray">
+
+            <include layout="@layout/framelayout_text"></include>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameSimActive"
+            android:layout_width="180dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/frameText"
+            android:layout_margin="5dp"
+            android:background="@android:color/holo_red_light">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/simactivateicon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="35dp"
+                android:padding="10dp"
+                android:text="Sim Activate"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/PortIn"
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
+            android:layout_below="@+id/frameText"
+            android:layout_margin="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/frameSimActive"
+            android:background="#9b59b6">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/portlnicon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:padding="10dp"
+                android:text="Port ln"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/framedateAndTime"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/frameSimActive"
+            android:layout_margin="5dp"
+            android:background="#bdc3c7">
+
+            <ImageView
+                android:id="@+id/imgDateAndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/time"/>
+
+            <TextView
+                android:id="@+id/dateAndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="90dp"
+                android:padding="5dp"
+                android:textColor="@android:color/white"
+                android:text="Date And Time"
+                android:textSize="15sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameSimReplacement"
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
+            android:layout_below="@+id/frameSimActive"
+            android:layout_margin="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/framedateAndTime"
+            android:background="#2ecc71">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/simreplacementicon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:padding="10dp"
+                android:text="Sim Replacement"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameTopupBalance"
+            android:layout_width="180dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/framedateAndTime"
+            android:layout_margin="5dp"
+            android:background="#34495e">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/topupbalanceicon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:padding="10dp"
+                android:text="Topup Balance"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameRechargeSim"
+            android:layout_width="170dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/framedateAndTime"
+            android:layout_margin="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/frameSimActive"
+            android:background="#f39c12">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/rechargesimicon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:padding="5dp"
+                android:text="Recharge Sim"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
