@@ -9,7 +9,7 @@
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:text="Name"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="20sp"
         android:layout_margin="5dp"
         android:padding="5dp"
@@ -21,16 +21,33 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:padding="5dp"
-        android:layout_margin="5dp"
-        android:text="TopUp"
-        android:textColor="@android:color/black"
-        android:layout_alignParentRight="true"/>
+        android:text="Amount"
+
+        android:textColor="@android:color/white"
+        android:layout_marginRight="12dp"
+        android:layout_alignBaseline="@+id/txtName"
+        android:layout_alignBottom="@+id/txtName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="12dp" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circular"
+        android:textColor="@color/circular"
+        android:text="TextView"
+        android:gravity="center"
+        android:layout_alignTop="@+id/txtPost"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/txtPost"
         android:layout_width="wrap_content"
         android:text="Post"
         android:textSize="15sp"
+        android:textColor="@color/white"
         android:layout_margin="5dp"
         android:layout_marginLeft="5dp"
         android:padding="5dp"

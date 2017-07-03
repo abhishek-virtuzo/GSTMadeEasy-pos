@@ -12,9 +12,9 @@
         android:layout_height="wrap_content"></include>
 
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
 
         <LinearLayout xmlns:tools="http://schemas.android.com/tools"
@@ -28,9 +28,9 @@
             <FrameLayout
                 android:id="@+id/frameText"
                 android:layout_width="match_parent"
-                android:layout_height="105dp"
-                android:layout_below="@id/toolbar_dashboard"
-                android:background="@android:color/darker_gray"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/background"
                 android:layout_margin="2.5dp">
 
                 <include layout="@layout/framelayout_text"></include>
@@ -38,13 +38,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <FrameLayout
                     android:id="@+id/frameSimActive"
                     android:layout_width="0dp"
-                    android:layout_height="145dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@android:color/holo_red_light"
                     android:layout_margin="2.5dp">
@@ -77,7 +78,7 @@
                 <FrameLayout
                     android:id="@+id/PortIn"
                     android:layout_width="0dp"
-                    android:layout_height="145dp"
+                    android:layout_height="match_parent"
                     android:layout_margin="2.5dp"
                     android:layout_weight="1"
                     android:background="#9b59b6">
@@ -111,13 +112,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <FrameLayout
                     android:id="@+id/frameTopupBalance"
                     android:layout_width="0dp"
-                    android:layout_height="145dp"
-                    android:layout_below="@+id/framedateAndTime"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2.5dp"
                     android:background="#34495e">
@@ -149,7 +150,7 @@
                 <FrameLayout
                     android:id="@+id/frameRechargeSim"
                     android:layout_width="0dp"
-                    android:layout_height="145dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2.5dp"
                     android:background="#f39c12">
@@ -171,7 +172,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:text="Recharge Sim"
+                            android:text= "Sim Recharge"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
                     </LinearLayout>
@@ -243,6 +244,6 @@
         </LinearLayout>
 
 
-    </ScrollView>
+    <!--</ScrollView>-->
 
 </LinearLayout>

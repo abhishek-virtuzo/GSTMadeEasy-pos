@@ -1,6 +1,5 @@
 package com.virtuzoconsultancyservicespvtltd.ahprepaid;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -34,7 +33,7 @@ import java.util.List;
 public class DashBoardScreen extends AppCompatActivity {
 
     FrameLayout frameText,frameSimActive, PortIn, framedateAndTime, frameSimReplacement, frameTopupBalance, frameRechargeSim;
-    TextView dateAndTime,txtName,txtPost,txtTopUp;
+    TextView dateAndTime,txtName,txtPost,txtTopUp, currentBalance;
     String strTopUp="",LastName="",DateAndTime="", FirstName="",Post="",LoginID = "", DistributorID = "", ClientTypeID = "", strMobileNumber = "", strEmailId = "", strTraiffResult = "", strTraiffId = "", strTraiffCode = "", responseCode = "",strLoginId="",strDistributorID="",emailid="",strFirstname="",strPost="",TotalTopup="";
     String TariffServiceURL = com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL.TariffServiceURL;
     ArrayList<String> listTraiffCode = new ArrayList<String>();
@@ -87,10 +86,12 @@ public class DashBoardScreen extends AppCompatActivity {
         frameRechargeSim = (FrameLayout) findViewById(R.id.frameRechargeSim);
         frameText=(FrameLayout)findViewById(R.id.frameText);
 
+
         txtName=(TextView)frameText.findViewById(R.id.txtName);
         txtPost=(TextView)frameText.findViewById(R.id.txtPost);
-        txtTopUp=(TextView)frameText .findViewById(R.id.txtTopUp);
+      //  txtTopUp=(TextView)frameText .findViewById(R.id.txtTopUp);
         imgDateAndTime=(ImageView)framedateAndTime.findViewById(R.id.imgDateAndTime);
+        currentBalance =(TextView)frameText.findViewById(R.id.textView2);
 
 
         SharedPreferences data=getSharedPreferences(PREFS_NAME,0);
@@ -148,7 +149,9 @@ public class DashBoardScreen extends AppCompatActivity {
         }else{
             txtPost.setText("Manager");
         }
-
+        if(!currentBalance.equals("")){
+            currentBalance.setText("$"+TotalTopup);
+        }
         if (!ClientTypeID.matches("1")){
             strTopUp=getIntent().getStringExtra("Topup");
             SharedPreferences setting=getSharedPreferences(PREFS_NAME,0);
@@ -157,12 +160,12 @@ public class DashBoardScreen extends AppCompatActivity {
             editor.commit();
             Log.d(TAG,"strTopUP balance is:"+strTopUp);
             if (strTopUp!=null){
-                txtTopUp.setText("$"+strTopUp);
+              //  txtTopUp.setText("$"+strTopUp);
             }else {
-                txtTopUp.setText("$"+TotalTopup);
+               // txtTopUp.setText("$"+TotalTopup);
             }
         }else {
-            txtTopUp.setText("");
+           // txtTopUp.setText("");
         }
 
         new PostData().execute(LoginID, DistributorID, ClientTypeID);

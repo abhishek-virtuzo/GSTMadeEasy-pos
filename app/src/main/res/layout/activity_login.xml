@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
-    tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.Login">
+    tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.Login"
+    android:backgroundTint="@color/themeColor"
+    android:background="@color/themeColor">
 
 
     <ImageView
@@ -12,7 +14,7 @@
         android:layout_height="100dp"
         android:layout_margin="10dp"
         android:layout_above="@+id/linearLayout"
-        android:src="@drawable/ah_prepaid"/>
+        android:src="@drawable/logow"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"

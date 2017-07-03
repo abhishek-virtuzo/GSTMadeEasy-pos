@@ -4,8 +4,11 @@
     <color name="colorPrimary">#284497</color>
     <color name="colorAccent">#3456b9</color>
     <color name="white">#fff</color>
+    <color name="background">#1673BD</color>
     <color name="black_semi_transparent">#B2000000</color>
     <color name="my_spinner_text_color">#000</color>
+    <color name="themeColor">#1673bd</color>
+    <color name="circular">#0f4c7d</color>
 
 
 </resources>

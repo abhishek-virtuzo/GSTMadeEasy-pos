@@ -5,10 +5,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
@@ -28,7 +35,11 @@ import java.math.BigDecimal;
 public class PayPalActivity extends AppCompatActivity {
 
     private Button buttonPay;
+    Button btnPayPal;
     private EditText editTextAmount;
+    public LinearLayout linearLayout;
+    private TextView currentBalance;
+    public String Total;
     private String paymentAmount;
     String DistributorID="",LoginID="",ClientTypeID="",DateAndTime="",FirstName="",TotalTopup="";
     public static final int PAYPAL_REQUEST_CODE = 123;
@@ -40,47 +51,148 @@ public class PayPalActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-
+ public TextView chargedAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_pal);
+        btnPayPal=(Button)findViewById(R.id.btnPayPal);
 
         buttonPay = (Button) findViewById(R.id.buttonPay);
+        linearLayout=(LinearLayout)findViewById(R.id.linearlayout1);
+      //  currentBalance=(TextView)findViewById(R.id.textView3);
 
+        chargedAmount=(TextView)findViewById(R.id.txtUSD);
         editTextAmount = (EditText) findViewById(R.id.editTextAmount);
+        editTextAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+               chargedAmount.setText("$"+""+"-"+"-");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(chargedAmount.toString().trim().length()>0) {
+                    paymentAmount = editTextAmount.getText().toString();
+                    if(paymentAmount.length()>0) {
+                        final double amount = Double.parseDouble(paymentAmount);
+
+                    double res = (amount * 3) / 100.0f;
+                    Log.d("amount", "3% percentage:" + res);
+                    Total = String.valueOf(Integer.parseInt(paymentAmount) + res);
+                    Log.d("total", "Total value is:" + Total);
+                    chargedAmount.setText("$" + "" + Total);
+                    linearLayout.setVisibility(View.VISIBLE);
+                }}
+                editTextAmount.setFilters(new InputFilter[] {
+                        new DigitsKeyListener(Boolean.FALSE, Boolean.TRUE) {
+                            int beforeDecimal = 5, afterDecimal = 2;
+
+                            @Override
+                            public CharSequence filter(CharSequence source, int start, int end,
+                                                       Spanned dest, int dstart, int dend) {
+                                String temp = editTextAmount.getText() + source.toString();
+
+                                if (temp.equals(".")) {
+                                    return "0.";
+                                }
+                                else if (temp.toString().indexOf(".") == -1) {
+                                    // no decimal point placed yet
+                                    if (temp.length() > beforeDecimal) {
+                                        return "";
+                                    }
+                                } else {
+                                    temp = temp.substring(temp.indexOf(".") + 1);
+                                    if (temp.length() > afterDecimal) {
+                                        return "";
+                                    }
+                                }
+
+                                return super.filter(source, start, end, dest, dstart, dend);
+                            }
+                        }
+                });
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(chargedAmount.toString().trim().length()>0){
+                    if(paymentAmount.length()>0) {
+                    paymentAmount=editTextAmount.getText().toString();
+                    final double amount=Double.parseDouble(paymentAmount);
+                    double res=(amount *3)/100.0f;
+                    Log.d("amount","3% percentage:"+res);
+                    Total=String.valueOf(Integer.parseInt(paymentAmount)+res);
+                    Log.d("total","Total value is:"+Total);
+                    chargedAmount.setText("$"+""+Total);
+                    linearLayout.setVisibility(View.VISIBLE);
+                    //do your stuff here
+                }}
+
+            }
+        });
         DistributorID=getIntent().getStringExtra("DistributorID");
         ClientTypeID=getIntent().getStringExtra("ClientTypeID");
+
         DateAndTime=getIntent().getStringExtra("DateAndTime");
         LoginID=getIntent().getStringExtra("LoginID");
         FirstName=getIntent().getStringExtra("FirstName");
-        TotalTopup=getIntent().getStringExtra("Topup");
+        TotalTopup=getIntent().getStringExtra("TotalTopup");
         Log.d("ahprepaid","paypal topup"+TotalTopup);
+//        currentBalance.setText("$"+" "+TotalTopup);
         final Intent intent = new Intent(this, PayPalService.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         startService(intent);
+        btnPayPal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getPayment();
+            }
 
+            private void getPayment() {
+                if (StringUtils.isBlank(paymentAmount)) {
+                    Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_SHORT).show();
+                }else if (paymentAmount.matches("0")){
+                    Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_SHORT).show();
+                }else{
+
+                PayPalPayment payment = new PayPalPayment(new BigDecimal(String.valueOf(Total)), "USD","Something", PayPalPayment.PAYMENT_INTENT_SALE);
+                Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
+                intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,config);
+                intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payment);
+                startActivityForResult(intent,PAYPAL_REQUEST_CODE);
+            }}
+        });
 
         buttonPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //getPayment();
-                paymentAmount=editTextAmount.getText().toString();
+
                 if (StringUtils.isBlank(paymentAmount)) {
                     Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_SHORT).show();
                 }else if (paymentAmount.matches("0")){
                     Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_SHORT).show();
                 }else {
-                    Intent intentNewTopUp=new Intent(PayPalActivity.this,NewTopup.class);
-                    intentNewTopUp.putExtra("FirstName",FirstName);
-                    intentNewTopUp.putExtra("paymentAmount",paymentAmount);
-                    intentNewTopUp.putExtra("ClientTypeID",ClientTypeID);
-                    intentNewTopUp.putExtra("DistributorID",DistributorID);
-                    intentNewTopUp.putExtra("DateAndTime",DateAndTime);
-                    intentNewTopUp.putExtra("LoginID",LoginID);
+                  // Intent intentNewTopUp=new Intent(PayPalActivity.this,NewTopup.class);
 
-                    startActivity(intentNewTopUp);
+                    final double amount=Double.parseDouble(paymentAmount);
+                    double res=(amount *3)/100.0f;
+                    Log.d("amount","3% percentage:"+res);
+                    Total=String.valueOf(Integer.parseInt(paymentAmount)+res);
+                    Log.d("total","Total value is:"+Total);
+                    chargedAmount.setText("USD"+""+Total);
+                    linearLayout.setVisibility(View.VISIBLE);
+//                    intentNewTopUp.putExtra("FirstName",FirstName);
+//                    intentNewTopUp.putExtra("paymentAmount",paymentAmount);
+//                    intentNewTopUp.putExtra("ClientTypeID",ClientTypeID);
+//                    intentNewTopUp.putExtra("DistributorID",DistributorID);
+//                    intentNewTopUp.putExtra("DateAndTime",DateAndTime);
+//                    intentNewTopUp.putExtra("LoginID",LoginID);
+//
+//                    startActivity(intentNewTopUp);
 
                 }
 
