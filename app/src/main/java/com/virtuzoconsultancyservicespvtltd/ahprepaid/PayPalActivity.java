@@ -57,8 +57,9 @@ public class PayPalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_pal);
+        setTitle("Top Up");
         btnPayPal=(Button)findViewById(R.id.btnPayPal);
-
+        currentBalance=(TextView)findViewById(R.id.textView4);
         buttonPay = (Button) findViewById(R.id.buttonPay);
         linearLayout=(LinearLayout)findViewById(R.id.linearlayout1);
       //  currentBalance=(TextView)findViewById(R.id.textView3);
@@ -87,7 +88,7 @@ public class PayPalActivity extends AppCompatActivity {
                 }}
                 editTextAmount.setFilters(new InputFilter[] {
                         new DigitsKeyListener(Boolean.FALSE, Boolean.TRUE) {
-                            int beforeDecimal = 5, afterDecimal = 2;
+                            int beforeDecimal = 6, afterDecimal = 2;
 
                             @Override
                             public CharSequence filter(CharSequence source, int start, int end,
@@ -141,7 +142,8 @@ public class PayPalActivity extends AppCompatActivity {
         FirstName=getIntent().getStringExtra("FirstName");
         TotalTopup=getIntent().getStringExtra("TotalTopup");
         Log.d("ahprepaid","paypal topup"+TotalTopup);
-//        currentBalance.setText("$"+" "+TotalTopup);
+
+        currentBalance.setText("$"+" "+TotalTopup);
         final Intent intent = new Intent(this, PayPalService.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         startService(intent);

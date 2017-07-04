@@ -1,57 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     android:orientation="vertical">
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerVertical="true"
+    android:gravity="center_vertical">
 
     <TextView
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+
+        android:padding="5dp"
         android:text="Name"
         android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:layout_margin="5dp"
-        android:padding="5dp"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/txtTopUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="5dp"
-        android:text="Amount"
-
-        android:textColor="@android:color/white"
-        android:layout_marginRight="12dp"
-        android:layout_alignBaseline="@+id/txtName"
-        android:layout_alignBottom="@+id/txtName"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="12dp" />
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/circular"
-        android:textColor="@color/circular"
-        android:text="TextView"
-        android:gravity="center"
-        android:layout_alignTop="@+id/txtPost"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
+        android:textSize="20sp" />
     <TextView
         android:id="@+id/txtPost"
         android:layout_width="wrap_content"
-        android:text="Post"
-        android:textSize="15sp"
-        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtName"
         android:layout_margin="5dp"
         android:layout_marginLeft="5dp"
         android:padding="5dp"
-        android:layout_below="@+id/txtName"
-        android:layout_height="wrap_content" />
+        android:text="Post"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+</LinearLayout>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical">
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:textSize="17sp"
+                android:background="@drawable/circular"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+
+
+
+
 
 </RelativeLayout>

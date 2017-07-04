@@ -29,8 +29,9 @@
                 android:id="@+id/frameText"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:gravity="center"
                 android:layout_weight="1"
-                android:background="@color/background"
+                android:background="#0f4c7d"
                 android:layout_margin="2.5dp">
 
                 <include layout="@layout/framelayout_text"></include>
@@ -67,7 +68,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:text="Sim Activate"
+                            android:text="SIM Activate"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
                     </LinearLayout>
@@ -172,7 +173,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:text= "Sim Recharge"
+                            android:text= "SIM Recharge"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
                     </LinearLayout>

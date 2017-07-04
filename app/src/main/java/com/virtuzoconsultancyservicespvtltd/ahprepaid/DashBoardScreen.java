@@ -144,13 +144,13 @@ public class DashBoardScreen extends AppCompatActivity {
 
 
         txtName.setText(FirstName);
-        if (!LastName.equals("")){
-            txtPost.setText("Manager");
-        }else{
-            txtPost.setText("Manager");
-        }
+
+            txtPost.setText(strEmailId);
+
+
+
         if(!currentBalance.equals("")){
-            currentBalance.setText("$"+TotalTopup);
+            currentBalance.setText("Amount"+"\n"+"$"+TotalTopup);
         }
         if (!ClientTypeID.matches("1")){
             strTopUp=getIntent().getStringExtra("Topup");
@@ -241,6 +241,7 @@ public class DashBoardScreen extends AppCompatActivity {
                 intentTopUpBalance.putExtra("ClientTypeID",ClientTypeID);
                 intentTopUpBalance.putExtra("DateAndTime",DateAndTime);
                 intentTopUpBalance.putExtra("FirstName",FirstName);
+                intentTopUpBalance.putExtra("TotalTopup",TotalTopup);
                 startActivity(intentTopUpBalance);
             }
         });
