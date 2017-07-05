@@ -3,10 +3,7 @@ package com.virtuzoconsultancyservicespvtltd.ahprepaid;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,15 +21,13 @@ import java.math.BigDecimal;
 
 public class NewTopup extends AppCompatActivity {
 
-    TextView ChargedAmount;
-    Button btnCancle,btnPayPal;
-    String FirstName="",paymentAmount="",amount="",ClientTypeID="",DistributorID="",DateAndTime="",LoginID="";
-
     public static final int PAYPAL_REQUEST_CODE = 123;
     private static PayPalConfiguration config = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION)
             .clientId(PayPalConfig.PAYPAL_CLIENT_ID);
-
+    TextView ChargedAmount;
+    Button btnCancle, btnPayPal;
+    String FirstName = "", paymentAmount = "", amount = "", ClientTypeID = "", DistributorID = "", DateAndTime = "", LoginID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +80,7 @@ public class NewTopup extends AppCompatActivity {
                 intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,config);
                 intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payment);
                 startActivityForResult(intent,PAYPAL_REQUEST_CODE);
+
             }
         });
 

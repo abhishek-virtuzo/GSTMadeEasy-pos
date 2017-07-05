@@ -1,10 +1,12 @@
 package com.virtuzoconsultancyservicespvtltd.ahprepaid;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -34,24 +36,29 @@ import java.math.BigDecimal;
 
 public class PayPalActivity extends AppCompatActivity {
 
-    private Button buttonPay;
-    Button btnPayPal;
-    private EditText editTextAmount;
-    public LinearLayout linearLayout;
-    private TextView currentBalance;
-    public String Total;
-    private String paymentAmount;
-    String DistributorID="",LoginID="",ClientTypeID="",DateAndTime="",FirstName="",TotalTopup="";
+
     public static final int PAYPAL_REQUEST_CODE = 123;
+    public static ProgressDialog progressDialog;
     private static PayPalConfiguration config = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION)
             .clientId(PayPalConfig.PAYPAL_CLIENT_ID);
+    public LinearLayout linearLayout;
+    public String Total;
+    public TextView chargedAmount;
+    Button btnPayPal;
+    PaymentidApi PaymentidApi;
+    String DistributorID = "", LoginID = "", ClientTypeID = "", DateAndTime = "", FirstName = "", TotalTopup = "";
+    String PaymentId;
+    String result;
+    private Button buttonPay;
+    private EditText editTextAmount;
+    private TextView currentBalance;
+    private String paymentAmount;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
- public TextView chargedAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +152,7 @@ public class PayPalActivity extends AppCompatActivity {
 
         currentBalance.setText("$"+" "+TotalTopup);
         final Intent intent = new Intent(this, PayPalService.class);
+        progressDialog = new ProgressDialog(this);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         startService(intent);
         btnPayPal.setOnClickListener(new View.OnClickListener() {
@@ -154,20 +162,30 @@ public class PayPalActivity extends AppCompatActivity {
             }
 
             private void getPayment() {
+                progressDialog.show();
+                PaymentidApi = new PaymentidApi(LoginID, DistributorID, Total);
+            }
+        });
+        progressDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
                 if (StringUtils.isBlank(paymentAmount)) {
                     Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_SHORT).show();
-                }else if (paymentAmount.matches("0")){
+                } else if (paymentAmount.matches("0")) {
                     Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
 
-                PayPalPayment payment = new PayPalPayment(new BigDecimal(String.valueOf(Total)), "USD","Something", PayPalPayment.PAYMENT_INTENT_SALE);
-                Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
-                intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,config);
-                intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payment);
-                startActivityForResult(intent,PAYPAL_REQUEST_CODE);
-            }}
+                    PayPalPayment payment = new PayPalPayment(new BigDecimal(String.valueOf(Total)), "USD", "Something", PayPalPayment.PAYMENT_INTENT_SALE);
+                    Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
+                    intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+                    intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
+                    startActivityForResult(intent, PAYPAL_REQUEST_CODE);
+
+                }
+
+
+            }
         });
-
         buttonPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -187,6 +205,7 @@ public class PayPalActivity extends AppCompatActivity {
                     Log.d("total","Total value is:"+Total);
                     chargedAmount.setText("USD"+""+Total);
                     linearLayout.setVisibility(View.VISIBLE);
+
 //                    intentNewTopUp.putExtra("FirstName",FirstName);
 //                    intentNewTopUp.putExtra("paymentAmount",paymentAmount);
 //                    intentNewTopUp.putExtra("ClientTypeID",ClientTypeID);
@@ -234,6 +253,7 @@ public class PayPalActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        PaymentId = PaymentidApi.paymentId;
         if (requestCode==PAYPAL_REQUEST_CODE){
             if (resultCode== Activity.RESULT_OK){
                 PaymentConfirmation confirm=data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
@@ -242,7 +262,6 @@ public class PayPalActivity extends AppCompatActivity {
                     try{
                         String paymentDetails=confirm.toJSONObject().toString(4);
                         Log.i("paymentExample",paymentDetails);
-
                         startActivity(new Intent(getApplicationContext(),ConfirmationActivity.class)
                                 .putExtra("PaymentDetails",paymentDetails)
                                 .putExtra("PaymentAmount",paymentAmount)
@@ -250,18 +269,57 @@ public class PayPalActivity extends AppCompatActivity {
                                 .putExtra("DistributorID",DistributorID)
                                 .putExtra("DateAndTime",DateAndTime)
                                 .putExtra("FirstName",FirstName)
+                                .putExtra("TotalTopup", TotalTopup)
+                                .putExtra("result", result)
+                                .putExtra("paymentId", PaymentId)
                                 .putExtra("LoginID",LoginID));
 
 
                     }catch (JSONException e){
+                        result = "an extremely unlikely failure occurred";
+                        Intent i = new Intent(getApplicationContext(), ConfirmationActivity.class);
+                        i.putExtra("PaymentAmount", paymentAmount);
+                        i.putExtra("ClientTypeID", ClientTypeID);
+                        i.putExtra("DistributorID", DistributorID);
+                        i.putExtra("DateAndTime", DateAndTime);
+                        i.putExtra("FirstName", FirstName);
+                        i.putExtra("paymentId", PaymentId);
+                        i.putExtra("TotalTopup", TotalTopup);
+                        i.putExtra("LoginID", LoginID);
+                        i.putExtra("result", result);
+                        startActivity(i);
                         Log.e("paymentAmount","an extremely unlikely failure occurred: ",e);
                     }
                 }
             }else if (resultCode==Activity.RESULT_CANCELED){
-                Log.i("paymentExample","The user canceled.");
+                Intent i = new Intent(getApplicationContext(), ConfirmationActivity.class);
+                result = "The user canceled.";
+                i.putExtra("PaymentAmount", paymentAmount);
+                i.putExtra("ClientTypeID", ClientTypeID);
+                i.putExtra("DistributorID", DistributorID);
+                i.putExtra("DateAndTime", DateAndTime);
+                i.putExtra("FirstName", FirstName);
+                i.putExtra("TotalTopup", TotalTopup);
+                i.putExtra("PaymentId", PaymentId);
+                i.putExtra("LoginID", LoginID);
+                i.putExtra("result", result);
+                startActivity(i);
+                Log.i("paymentExample", "The user canceled." + PaymentId);
 
             }else if (resultCode==PaymentActivity.RESULT_EXTRAS_INVALID){
-                Log.i("paymentExample","An invalid Payment or PayPalConfiguration was submitted. Please see the docs.");
+                result = "An invalid Payment or PayPalConfiguration was submitted.";
+                Intent i = new Intent(getApplicationContext(), ConfirmationActivity.class);
+                i.putExtra("PaymentAmount", paymentAmount);
+                i.putExtra("ClientTypeID", ClientTypeID);
+                i.putExtra("DistributorID", DistributorID);
+                i.putExtra("DateAndTime", DateAndTime);
+                i.putExtra("TotalTopup", TotalTopup);
+                i.putExtra("FirstName", FirstName);
+                i.putExtra("PaymentId", PaymentId);
+                i.putExtra("LoginID", LoginID);
+                i.putExtra("result", result);
+                startActivity(i);
+                Log.i("paymentExample", "An invalid Payment or PayPalConfiguration was submitted. Please see the docs." + PaymentId);
 
             }
         }
@@ -313,10 +371,24 @@ public class PayPalActivity extends AppCompatActivity {
         super.onBackPressed();
         this.finish();
         Intent intent=new Intent(PayPalActivity.this,DashBoardScreen.class);
-        intent.putExtra("Topup",TotalTopup);
+
         startActivity(intent);
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+    }
+
 
 
 }

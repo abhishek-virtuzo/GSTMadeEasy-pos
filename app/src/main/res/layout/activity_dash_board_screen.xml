@@ -29,10 +29,10 @@
                 android:id="@+id/frameText"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
+                android:layout_margin="2.5dp"
                 android:layout_weight="1"
                 android:background="#0f4c7d"
-                android:layout_margin="2.5dp">
+                android:gravity="center">
 
                 <include layout="@layout/framelayout_text"></include>
             </FrameLayout>
@@ -47,9 +47,9 @@
                     android:id="@+id/frameSimActive"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
                     android:layout_weight="1"
-                    android:background="@android:color/holo_red_light"
-                    android:layout_margin="2.5dp">
+                    android:background="@android:color/holo_red_light">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -120,8 +120,8 @@
                     android:id="@+id/frameTopupBalance"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:layout_margin="2.5dp"
+                    android:layout_weight="1"
                     android:background="#34495e">
 
                     <LinearLayout
@@ -141,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:text="Topup Balance"
+                            android:text="Wallet Top Up"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
                     </LinearLayout>
@@ -152,8 +152,8 @@
                     android:id="@+id/frameRechargeSim"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:layout_margin="2.5dp"
+                    android:layout_weight="1"
                     android:background="#f39c12">
 
                     <LinearLayout

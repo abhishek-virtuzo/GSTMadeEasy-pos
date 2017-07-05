@@ -1,17 +1,14 @@
 package com.virtuzoconsultancyservicespvtltd.ahprepaid;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,12 +29,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Login extends AppCompatActivity {
+    public static final String PREFS_NAME = "LoginPrefs";
+    private static final String TAG = Login.class.getSimpleName();
     EditText username, password;
     TextInputLayout usernamelayout, passwordlayout;
     Button loginbutton;
     ConnectionDetector connectionDetector;
-    public static final String PREFS_NAME = "LoginPrefs";
-    private static final String TAG = Login.class.getSimpleName();
     String URL = com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL.LoginServiceURL;
 
     String UserName = "", Password = "", strResult = "", TotalTopup = "", LastName = "", FirstName = "", Post = "", Message = "", ClientTypeID = "", DistributorID = "", LoginID = "", MobileNumber = "", EmailID = "", strMessage = "";
@@ -88,6 +85,38 @@ public class Login extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        return;
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        this.finish();
+        System.exit(0);
+
+        SharedPreferences setting = getSharedPreferences(PREFS_NAME, 0);
+        if (setting.getString("logged", "").toString().equals("logged")) {
+            Intent intent = new Intent(Login.this, DashBoardScreen.class);
+            startActivity(intent);
+        } else {
+            return;
+        }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 
     public class PostData extends AsyncTask<String, String, String> {
         @Override
@@ -132,7 +161,7 @@ public class Login extends AppCompatActivity {
                     Log.d(TAG, "ClientTypeID Pass:" + ClientTypeID);
                     DistributorID = jsonObject.getString("DistributorID");
                     Log.d(TAG, "DistributorID Pass:" + DistributorID);
-                    LoginID = jsonObject.getString("CreatedBy");
+                    LoginID = jsonObject.getString("ID");
                     Log.d(TAG, "LoginID Pass:" + LoginID);
                     MobileNumber = jsonObject.getString("MobileNumber");
                     Log.d(TAG, "Mobile Number :" + MobileNumber);
@@ -212,40 +241,6 @@ public class Login extends AppCompatActivity {
             }
         }
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        this.finish();
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        return;
-    }
-
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        this.finish();
-        System.exit(0);
-
-        SharedPreferences setting = getSharedPreferences(PREFS_NAME, 0);
-        if (setting.getString("logged", "").toString().equals("logged")) {
-            Intent intent = new Intent(Login.this, DashBoardScreen.class);
-            startActivity(intent);
-        } else {
-            return;
-        }
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
     }
 
 }

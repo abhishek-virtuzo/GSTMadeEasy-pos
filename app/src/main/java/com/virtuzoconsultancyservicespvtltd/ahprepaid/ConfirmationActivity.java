@@ -1,17 +1,15 @@
 package com.virtuzoconsultancyservicespvtltd.ahprepaid;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -29,43 +27,75 @@ import java.util.List;
 
 public class ConfirmationActivity extends AppCompatActivity {
 
-    String TOPUPURL= URL.TOPUPService;
-    String Message="",Response="",ResponseCode="",TotalTopup="",PaymentAmount="",ClientTypeID="",DistributorID="",DateAndTime="",LoginID="",Status="",strResult="",FirstName="",TxnID="";
-    private static final String TAG=ConfirmationActivity.class.getSimpleName();
     public static final String PREFS_NAME = "LoginPrefs";
+    private static final String TAG = ConfirmationActivity.class.getSimpleName();
+    //  String TOPUPURL= URL.TOPUPService;
+    String Message = "", Response = "", ResponseCode = "", TotalTopup = "", PaymentAmount = "", ClientTypeID = "", DistributorID = "", DateAndTime = "", LoginID = "", Status = "", strResult = "", FirstName = "", TxnID = "";
+    String result, PaymentId;
+    ConfirmTransactionApi confirmTransactionApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
-
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        TextView setMessage = (TextView) findViewById(R.id.setmessage);
         Intent intent = getIntent();
         PaymentAmount=intent.getStringExtra("PaymentAmount");
         Log.d(TAG,"PaymentAmount is:"+PaymentAmount);
+        TotalTopup = intent.getStringExtra("TotalTopup");
+        Log.d(TAG, "PaymentAmount is:" + TotalTopup);
         ClientTypeID=intent.getStringExtra("ClientTypeID");
         DistributorID=intent.getStringExtra("DistributorID");
         DateAndTime=intent.getStringExtra("DateAndTime");
         LoginID=intent.getStringExtra("LoginID");
+        PaymentId = intent.getStringExtra("PaymentId");
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
         FirstName=intent.getStringExtra("FirstName");
+        result = intent.getStringExtra("result");
+        TextView paymentid = (TextView) findViewById(R.id.textView5);
+        TextView Result = (TextView) findViewById(R.id.textView6);
+        paymentid.setText(PaymentId);
+        Result.setText(result);
+        String success = "success.";
+        if (result.equals(success)) {
+            imageView.setImageResource(R.drawable.smile);
+            setMessage.setText("Congratulations, Your transaction was successful");
+            Result.setVisibility(View.INVISIBLE);
+            paymentid.setVisibility(View.INVISIBLE);
+            //   confirmTransactionApi= new ConfirmTransactionApi(response,TxnId,24,PaymentId,LoginID,DistributorID,PaymentAmount);
 
-        try {
-            JSONObject jsonDetails = new JSONObject(intent.getStringExtra("PaymentDetails"));
+        } else {
+            imageView.setImageResource(R.drawable.sad);
+            setMessage.setText("Sorry, Your transaction was unsuccessful");
+            Result.setVisibility(View.INVISIBLE);
+            paymentid.setVisibility(View.INVISIBLE);
+            linearLayout.setVisibility(View.INVISIBLE);
+            String response = "fail";
+            String TxnId = "0";
+            confirmTransactionApi = new ConfirmTransactionApi(response, TxnId, 25, PaymentId, LoginID, DistributorID, PaymentAmount);
 
-            //Displaying payment details
-            showDetails(jsonDetails.getJSONObject("response"), intent.getStringExtra("PaymentAmount"));
-        } catch (JSONException e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
         }
-
-        new postData().execute(TOPUPURL,PaymentAmount,ClientTypeID,DistributorID,DateAndTime,LoginID,Status);
-
-        ((Button) findViewById(R.id.dashBoardButton)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext() , DashBoardScreen.class);
-                startActivity(intent1);
-            }
-        });
+//        try { if(result.equals(success)) {
+//            JSONObject jsonDetails = new JSONObject(intent.getStringExtra("PaymentDetails"));
+//
+//            //Displaying payment details
+//            showDetails(jsonDetails.getJSONObject("response"), intent.getStringExtra("PaymentAmount"));
+//        }
+//        } catch (JSONException e) {
+//            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//        }
+//
+//        new postData().execute(TOPUPURL,PaymentAmount,ClientTypeID,DistributorID,DateAndTime,LoginID,Status);
+//
+//        ((Button) findViewById(R.id.dashBoardButton)).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent1 = new Intent(getApplicationContext() , DashBoardScreen.class);
+//                startActivity(intent1);
+//            }
+//        });
 
 
     }
@@ -76,6 +106,7 @@ public class ConfirmationActivity extends AppCompatActivity {
         TextView textViewAmount = (TextView) findViewById(R.id.paymentAmount);
 
         //Showing the details from json object
+
         textViewId.setText(jsonDetails.getString("id"));
         textViewStatus.setText(jsonDetails.getString("state"));
         Status=textViewStatus.getText().toString();
@@ -83,6 +114,14 @@ public class ConfirmationActivity extends AppCompatActivity {
         textViewAmount.setText(paymentAmount+" USD");
         TxnID=textViewId.getText().toString();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(ConfirmationActivity.this, PayPalActivity.class);
+        intent.putExtra("Topup", TotalTopup);
+        startActivity(intent);
     }
 
     private class postData  extends AsyncTask<String,String,String>{
@@ -137,13 +176,5 @@ public class ConfirmationActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
             }
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent=new Intent(ConfirmationActivity.this,PayPalActivity.class);
-        intent.putExtra("Topup",TotalTopup);
-        startActivity(intent);
     }
 }

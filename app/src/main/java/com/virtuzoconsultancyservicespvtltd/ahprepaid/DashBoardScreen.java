@@ -3,8 +3,8 @@ package com.virtuzoconsultancyservicespvtltd.ahprepaid;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -32,16 +32,16 @@ import java.util.List;
 
 public class DashBoardScreen extends AppCompatActivity {
 
+    public static final String PREFS_NAME = "LoginPrefs";
+    private static final String TAG = DashBoardScreen.class.getSimpleName();
     FrameLayout frameText,frameSimActive, PortIn, framedateAndTime, frameSimReplacement, frameTopupBalance, frameRechargeSim;
     TextView dateAndTime,txtName,txtPost,txtTopUp, currentBalance;
     String strTopUp="",LastName="",DateAndTime="", FirstName="",Post="",LoginID = "", DistributorID = "", ClientTypeID = "", strMobileNumber = "", strEmailId = "", strTraiffResult = "", strTraiffId = "", strTraiffCode = "", responseCode = "",strLoginId="",strDistributorID="",emailid="",strFirstname="",strPost="",TotalTopup="";
     String TariffServiceURL = com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL.TariffServiceURL;
     ArrayList<String> listTraiffCode = new ArrayList<String>();
     ArrayList<String> listTraiffid = new ArrayList<String>();
-    public static final String PREFS_NAME = "LoginPrefs";
     Button btnLogout;
     ImageView imgDateAndTime;
-    private static final String TAG = DashBoardScreen.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,7 +187,8 @@ public class DashBoardScreen extends AppCompatActivity {
         frameRechargeSim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"We are coming soon with this",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), RechargeActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -247,6 +248,22 @@ public class DashBoardScreen extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
+
     private class PostData extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... params) {
@@ -286,21 +303,5 @@ public class DashBoardScreen extends AppCompatActivity {
             }
             return strTraiffResult;
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        this.finish();
-        Intent intent=new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
     }
 }
