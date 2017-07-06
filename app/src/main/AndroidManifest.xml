@@ -82,6 +82,7 @@
             android:label="@string/title_activity_new_topup"
             android:theme="@style/AppTheme" />
         <activity android:name=".RechargeActivity" />
+        <activity android:name=".SelectOperatorActivity"></activity>
     </application>
 
 </manifest>
