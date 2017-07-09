@@ -64,9 +64,7 @@
             android:name=".SimReplacement"
             android:label="New SIM Replacement"
             android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".PayPalActivity"
-            android:label="Topup" />
+
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -81,8 +79,12 @@
             android:name=".NewTopup"
             android:label="@string/title_activity_new_topup"
             android:theme="@style/AppTheme" />
-        <activity android:name=".RechargeActivity" />
-        <activity android:name=".SelectOperatorActivity"></activity>
+        <activity android:name=".Views.Activity.RechargeActivity" />
+        <activity android:name=".Views.Activity.SelectOperatorActivity" />
+        <activity android:name=".Views.Activity.SelectPlanActivity" />
+        <activity android:name=".Views.Activity.TopUpActivity" />
+        <activity android:name=".Views.Activity.RechargePaymentActivity" />
+        <activity android:name=".Views.Activity.ConfirmRechargeActivity"></activity>
     </application>
 
 </manifest>

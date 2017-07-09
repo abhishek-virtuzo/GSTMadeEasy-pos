@@ -14,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.CheckBalance;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.RechargeActivity;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.TopUpActivity;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -34,9 +38,9 @@ public class DashBoardScreen extends AppCompatActivity {
 
     public static final String PREFS_NAME = "LoginPrefs";
     private static final String TAG = DashBoardScreen.class.getSimpleName();
-    FrameLayout frameText,frameSimActive, PortIn, framedateAndTime, frameSimReplacement, frameTopupBalance, frameRechargeSim;
-    TextView dateAndTime,txtName,txtPost,txtTopUp, currentBalance;
-    String strTopUp="",LastName="",DateAndTime="", FirstName="",Post="",LoginID = "", DistributorID = "", ClientTypeID = "", strMobileNumber = "", strEmailId = "", strTraiffResult = "", strTraiffId = "", strTraiffCode = "", responseCode = "",strLoginId="",strDistributorID="",emailid="",strFirstname="",strPost="",TotalTopup="";
+    FrameLayout frameText, frameSimActive, PortIn, framedateAndTime, frameSimReplacement, frameTopupBalance, frameRechargeSim;
+    TextView dateAndTime, txtName, txtPost, txtTopUp, currentBalance;
+    String strTopUp = "", LastName = "", DateAndTime = "", FirstName = "", Post = "", LoginID = "", DistributorID = "", ClientTypeID = "", strMobileNumber = "", strEmailId = "", strTraiffResult = "", strTraiffId = "", strTraiffCode = "", responseCode = "", strLoginId = "", strDistributorID = "", emailid = "", strFirstname = "", strPost = "", TotalTopup = "";
     String TariffServiceURL = com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL.TariffServiceURL;
     ArrayList<String> listTraiffCode = new ArrayList<String>();
     ArrayList<String> listTraiffid = new ArrayList<String>();
@@ -50,16 +54,17 @@ public class DashBoardScreen extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        Toolbar toolbar_dashbord=(Toolbar)findViewById(R.id.toolbar_dashboard);
-        btnLogout=(Button)toolbar_dashbord.findViewById(R.id.btnLogout);
+
+        Toolbar toolbar_dashbord = (Toolbar) findViewById(R.id.toolbar_dashboard);
+        btnLogout = (Button) toolbar_dashbord.findViewById(R.id.btnLogout);
 
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                SharedPreferences setting=getSharedPreferences(PREFS_NAME,0);
-                SharedPreferences.Editor editor=setting.edit();
+                SharedPreferences setting = getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor = setting.edit();
                 editor.remove("logged");
                 editor.remove("LoginID");
                 editor.remove("ClientTypeID");
@@ -71,7 +76,7 @@ public class DashBoardScreen extends AppCompatActivity {
                 editor.remove("TotalTopup");
                 editor.remove("LastName");
                 editor.commit();
-                Intent intentLogin=new Intent(DashBoardScreen.this,Login.class);
+                Intent intentLogin = new Intent(DashBoardScreen.this, Login.class);
                 startActivity(intentLogin);
                 /*finish();*/
 
@@ -84,46 +89,52 @@ public class DashBoardScreen extends AppCompatActivity {
         frameSimReplacement = (FrameLayout) findViewById(R.id.frameSimReplacement);
         frameTopupBalance = (FrameLayout) findViewById(R.id.frameTopupBalance);
         frameRechargeSim = (FrameLayout) findViewById(R.id.frameRechargeSim);
-        frameText=(FrameLayout)findViewById(R.id.frameText);
+        frameText = (FrameLayout) findViewById(R.id.frameText);
 
 
-        txtName=(TextView)frameText.findViewById(R.id.txtName);
-        txtPost=(TextView)frameText.findViewById(R.id.txtPost);
-      //  txtTopUp=(TextView)frameText .findViewById(R.id.txtTopUp);
-        imgDateAndTime=(ImageView)framedateAndTime.findViewById(R.id.imgDateAndTime);
-        currentBalance =(TextView)frameText.findViewById(R.id.textView2);
+        txtName = (TextView) frameText.findViewById(R.id.txtName);
+        txtPost = (TextView) frameText.findViewById(R.id.txtPost);
+        //  txtTopUp=(TextView)frameText .findViewById(R.id.txtTopUp);
+        imgDateAndTime = (ImageView) framedateAndTime.findViewById(R.id.imgDateAndTime);
+        currentBalance = (TextView) frameText.findViewById(R.id.textView2);
 
-
-        SharedPreferences data=getSharedPreferences(PREFS_NAME,0);
-        if (data.contains("LoginID")){
-            LoginID=data.getString("LoginID","");
-            Log.d(TAG,"shared login id:"+strLoginId);
+        SharedPreferences data = getSharedPreferences(PREFS_NAME, 0);
+        if (data.contains("LoginID")) {
+            LoginID = data.getString("LoginID", "");
+            Log.d(TAG, "shared login id:" + strLoginId);
         }
-        if (data.contains("DistributorID")){
-            DistributorID=data.getString("DistributorID","");
-            Log.d(TAG,"shared distributor id:"+strDistributorID);
-        }if (data.contains("MobileNumber")){
-            strMobileNumber=data.getString("MobileNumber","");
-            Log.d(TAG,"shared mobile no:"+strMobileNumber);
-        }if (data.contains("EmailID")){
-            strEmailId=data.getString("EmailID","");
-            Log.d(TAG,"shared emailid:"+emailid);
-        }if (data.contains("FirstName")){
-            FirstName=data.getString("FirstName","");
-            Log.d(TAG,"shared firstname:"+strFirstname);
-        }if (data.contains("Post")) {
+        if (data.contains("DistributorID")) {
+            DistributorID = data.getString("DistributorID", "");
+            Log.d(TAG, "shared distributor id:" + strDistributorID);
+        }
+        if (data.contains("MobileNumber")) {
+            strMobileNumber = data.getString("MobileNumber", "");
+            Log.d(TAG, "shared mobile no:" + strMobileNumber);
+        }
+        if (data.contains("EmailID")) {
+            strEmailId = data.getString("EmailID", "");
+            Log.d(TAG, "shared emailid:" + emailid);
+        }
+        if (data.contains("FirstName")) {
+            FirstName = data.getString("FirstName", "");
+            Log.d(TAG, "shared firstname:" + strFirstname);
+        }
+        if (data.contains("Post")) {
             Post = data.getString("Post", "");
             Log.d(TAG, "shared post data:" + strPost);
-        }if (data.contains("ClientTypeID")) {
+        }
+        if (data.contains("ClientTypeID")) {
             ClientTypeID = data.getString("ClientTypeID", "");
             Log.d(TAG, "shared post data:" + strPost);
-        }if (data.contains("TotalTopup")) {
+        }
+        if (data.contains("TotalTopup")) {
             TotalTopup = data.getString("TotalTopup", "");
             Log.d(TAG, "shared post topup data is:" + TotalTopup);
-        }if (data.contains("LastName")){
-            LastName=data.getString("LastName","");
-            Log.d(TAG,"shared post LastName data is:"+LastName);
-        }else {
+        }
+        if (data.contains("LastName")) {
+            LastName = data.getString("LastName", "");
+            Log.d(TAG, "shared post LastName data is:" + LastName);
+        } else {
             LoginID = getIntent().getStringExtra("LoginID");
             Log.d(TAG, "LoginId" + LoginID);
             DistributorID = getIntent().getStringExtra("DistributorID");
@@ -133,39 +144,34 @@ public class DashBoardScreen extends AppCompatActivity {
             strEmailId = getIntent().getStringExtra("strEmailId");
             strMobileNumber = getIntent().getStringExtra("strMobileNumber");
             Log.d(TAG, "Mobile No :" + strMobileNumber);
-            FirstName=getIntent().getStringExtra("FirstName");
-            Post=getIntent().getStringExtra("Post");
-            TotalTopup=getIntent().getStringExtra("TotalTopup");
-            Toast.makeText(getApplicationContext(),TotalTopup,Toast.LENGTH_SHORT).show();
-            Log.d(TAG,"Balance is:"+TotalTopup);
-            LastName=getIntent().getStringExtra("LastName");
+            FirstName = getIntent().getStringExtra("FirstName");
+            Post = getIntent().getStringExtra("Post");
+            TotalTopup = getIntent().getStringExtra("TotalTopup");
+            Toast.makeText(getApplicationContext(), TotalTopup, Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Balance is:" + TotalTopup);
+            LastName = getIntent().getStringExtra("LastName");
 
         }
-
 
         txtName.setText(FirstName);
 
-            txtPost.setText(strEmailId);
+        txtPost.setText(strEmailId);
 
+        if (!ClientTypeID.matches("1")) {
+            strTopUp = getIntent().getStringExtra("Topup");
+            SharedPreferences setting = getSharedPreferences(PREFS_NAME, 0);
+            SharedPreferences.Editor editor = setting.edit();
+            editor.putString("strTopUpBalance", strTopUp);
 
-
-        if(!currentBalance.equals("")){
-            currentBalance.setText("Amount"+"\n"+"$"+TotalTopup);
-        }
-        if (!ClientTypeID.matches("1")){
-            strTopUp=getIntent().getStringExtra("Topup");
-            SharedPreferences setting=getSharedPreferences(PREFS_NAME,0);
-            SharedPreferences.Editor editor=setting.edit();
-            editor.putString("strTopUpBalance",strTopUp);
             editor.commit();
-            Log.d(TAG,"strTopUP balance is:"+strTopUp);
-            if (strTopUp!=null){
-              //  txtTopUp.setText("$"+strTopUp);
-            }else {
-               // txtTopUp.setText("$"+TotalTopup);
+            Log.d(TAG, "strTopUP balance is:" + strTopUp);
+            if (strTopUp != null) {
+                //  txtTopUp.setText("$"+strTopUp);
+            } else {
+                // txtTopUp.setText("$"+TotalTopup);
             }
-        }else {
-           // txtTopUp.setText("");
+        } else {
+            // txtTopUp.setText("");
         }
 
         new PostData().execute(LoginID, DistributorID, ClientTypeID);
@@ -175,20 +181,26 @@ public class DashBoardScreen extends AppCompatActivity {
         String date = df.format(Calendar.getInstance().getTime());
         dateAndTime = (TextView) framedateAndTime.findViewById(R.id.dateAndTime);
         dateAndTime.setText(date);
-        DateAndTime=dateAndTime.getText().toString();
+        DateAndTime = dateAndTime.getText().toString();
 
         framedateAndTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Today "+DateAndTime,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Today " + DateAndTime, Toast.LENGTH_SHORT).show();
             }
         });
 
         frameRechargeSim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RechargeActivity.class);
-                startActivity(intent);
+                Intent intentTopUpBalance = new Intent(getApplicationContext(), RechargeActivity.class);
+                intentTopUpBalance.putExtra("DistributorID", DistributorID);
+                intentTopUpBalance.putExtra("LoginID", LoginID);
+                intentTopUpBalance.putExtra("ClientTypeID", ClientTypeID);
+                intentTopUpBalance.putExtra("DateAndTime", DateAndTime);
+                intentTopUpBalance.putExtra("FirstName", FirstName);
+                intentTopUpBalance.putExtra("TotalTopup", TotalTopup);
+                startActivity(intentTopUpBalance);
             }
         });
 
@@ -227,8 +239,8 @@ public class DashBoardScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentSimReplacement = new Intent(DashBoardScreen.this, SimReplacement.class);
-                intentSimReplacement.putExtra("DistributorID",DistributorID);
-                intentSimReplacement.putExtra("LoginID",LoginID);
+                intentSimReplacement.putExtra("DistributorID", DistributorID);
+                intentSimReplacement.putExtra("LoginID", LoginID);
                 startActivity(intentSimReplacement);
             }
         });
@@ -236,13 +248,13 @@ public class DashBoardScreen extends AppCompatActivity {
         frameTopupBalance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentTopUpBalance = new Intent(DashBoardScreen.this, PayPalActivity.class);
-                intentTopUpBalance.putExtra("DistributorID",DistributorID);
-                intentTopUpBalance.putExtra("LoginID",LoginID);
-                intentTopUpBalance.putExtra("ClientTypeID",ClientTypeID);
-                intentTopUpBalance.putExtra("DateAndTime",DateAndTime);
-                intentTopUpBalance.putExtra("FirstName",FirstName);
-                intentTopUpBalance.putExtra("TotalTopup",TotalTopup);
+                Intent intentTopUpBalance = new Intent(DashBoardScreen.this, TopUpActivity.class);
+                intentTopUpBalance.putExtra("DistributorID", DistributorID);
+                intentTopUpBalance.putExtra("LoginID", LoginID);
+                intentTopUpBalance.putExtra("ClientTypeID", ClientTypeID);
+                intentTopUpBalance.putExtra("DateAndTime", DateAndTime);
+                intentTopUpBalance.putExtra("FirstName", FirstName);
+                intentTopUpBalance.putExtra("TotalTopup", TotalTopup);
                 startActivity(intentTopUpBalance);
             }
         });
@@ -250,19 +262,38 @@ public class DashBoardScreen extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        this.finish();
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        //  super.onBackPressed();
+        //this.finish();
+//        Intent intent = new Intent(Intent.ACTION_MAIN);
+//        intent.addCategory(Intent.CATEGORY_HOME);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        finish();
+
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        currentBalance.setText("Loadind..");
+        setBalance();
+    }
+
+    private void setBalance() {
+
+        if (new ConnectionDetector(this).isConnectingToInternet()) {
+            new CheckBalance(this, DistributorID, currentBalance);
+        } else {
+            currentBalance.setText("Amount" + "\n" + "$" + TotalTopup);
+        }
+
+    }
+
 
     private class PostData extends AsyncTask<String, String, String> {
         @Override
@@ -286,7 +317,7 @@ public class DashBoardScreen extends AppCompatActivity {
 
             try {
                 JSONArray jsonArray = new JSONArray(strTraiffResult);
-                for (int i = 0; i <jsonArray.length(); i++) {
+                for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     strTraiffId = jsonObject.getString("TariffID");
                     Log.d(TAG, "StrTraiff id :" + strTraiffId);
@@ -304,4 +335,5 @@ public class DashBoardScreen extends AppCompatActivity {
             return strTraiffResult;
         }
     }
+
 }

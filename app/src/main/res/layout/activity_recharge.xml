@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.RechargeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffff"
+            android:paddingLeft="10dp"
+            android:textColor="#000000">
+
+
+            <EditText
+                android:id="@+id/mobileNoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@null"
+                android:hint="Mobile No"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:textColor="#000000" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/password_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="15dp"
+            android:background="#ffffff"
+            android:paddingLeft="10dp"
+            android:textColor="#000000">
+
+            <EditText
+                android:id="@+id/confirmMobileNoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@null"
+                android:hint="Confirm Mobile No"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:textColor="#000000" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="15dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/operator_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:textColor="#000000">
+
+                <EditText
+                    android:id="@+id/operatorEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/white"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:hint="Operator"
+                    android:paddingLeft="15dp"
+                    android:singleLine="true"
+                    android:textColor="#000000" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:id="@+id/operatorSelectView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </RelativeLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/zip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="15dp"
+            android:background="#ffffff"
+            android:paddingLeft="10dp"
+            android:textColor="#000000">
+
+            <EditText
+                android:id="@+id/zipcodeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@null"
+                android:hint="Zip Code"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textColor="#000000" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="15dp">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/plan_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:textColor="#000000">
+
+
+                <EditText
+                    android:id="@+id/planEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/white"
+                    android:focusable="false"
+                    android:hint="Plan"
+                    android:paddingLeft="15dp"
+                    android:singleLine="true"
+                    android:textColor="#000000" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:id="@+id/planSelectView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#000000" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="15dp">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/amount_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:textColor="#000000">
+
+
+                <EditText
+                    android:id="@+id/amountEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/white"
+                    android:focusable="false"
+                    android:hint="Amount"
+                    android:paddingLeft="15dp"
+                    android:singleLine="true"
+                    android:textColor="#000000" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:id="@+id/amountSelectView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#000000" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/proceed"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/edittext_shapeee"
+        android:padding="5dp"
+        android:text="Proceed"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+</android.widget.RelativeLayout>

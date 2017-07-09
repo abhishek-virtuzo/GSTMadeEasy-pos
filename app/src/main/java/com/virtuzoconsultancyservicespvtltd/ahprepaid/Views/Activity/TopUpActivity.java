@@ -1,4 +1,4 @@
-package com.virtuzoconsultancyservicespvtltd.ahprepaid;
+package com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -28,25 +28,30 @@ import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
+import com.paypal.android.sdk.payments.ProofOfPayment;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.ConfirmationActivity;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.PaymentidApi;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.R;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.PayPalConfig;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.StringUtils;
 
 import org.json.JSONException;
 
 import java.math.BigDecimal;
 
-public class PayPalActivity extends AppCompatActivity {
+public class TopUpActivity extends AppCompatActivity {
 
 
     public static final int PAYPAL_REQUEST_CODE = 123;
     public static ProgressDialog progressDialog;
     private static PayPalConfiguration config = new PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION)
+            .environment(PayPalConfig.ENVIRONMENT)
             .clientId(PayPalConfig.PAYPAL_CLIENT_ID);
     public LinearLayout linearLayout;
     public String Total;
     public TextView chargedAmount;
     Button btnPayPal;
-    PaymentidApi PaymentidApi;
+    com.virtuzoconsultancyservicespvtltd.ahprepaid.PaymentidApi PaymentidApi;
     String DistributorID = "", LoginID = "", ClientTypeID = "", DateAndTime = "", FirstName = "", TotalTopup = "";
     String PaymentId;
     String result;
@@ -70,6 +75,8 @@ public class PayPalActivity extends AppCompatActivity {
         buttonPay = (Button) findViewById(R.id.buttonPay);
         linearLayout=(LinearLayout)findViewById(R.id.linearlayout1);
       //  currentBalance=(TextView)findViewById(R.id.textView3);
+
+        setTitle("Wallet Top Up");
 
         chargedAmount=(TextView)findViewById(R.id.txtUSD);
         editTextAmount = (EditText) findViewById(R.id.editTextAmount);
@@ -148,6 +155,9 @@ public class PayPalActivity extends AppCompatActivity {
         LoginID=getIntent().getStringExtra("LoginID");
         FirstName=getIntent().getStringExtra("FirstName");
         TotalTopup=getIntent().getStringExtra("TotalTopup");
+
+        TotalTopup = String.valueOf(getSharedPreferences("LoginPrefs", 0).getFloat("Balance", Float.parseFloat(TotalTopup)));
+
         Log.d("ahprepaid","paypal topup"+TotalTopup);
 
         currentBalance.setText("$"+" "+TotalTopup);
@@ -166,6 +176,7 @@ public class PayPalActivity extends AppCompatActivity {
                 PaymentidApi = new PaymentidApi(LoginID, DistributorID, Total);
             }
         });
+
         progressDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
@@ -244,6 +255,7 @@ public class PayPalActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
+
     @Override
     protected void onDestroy() {
         stopService(new Intent(this, PayPalService.class));
@@ -254,16 +266,41 @@ public class PayPalActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         PaymentId = PaymentidApi.paymentId;
-        if (requestCode==PAYPAL_REQUEST_CODE){
-            if (resultCode== Activity.RESULT_OK){
+        if (requestCode == PAYPAL_REQUEST_CODE) {
+
+            if (resultCode == Activity.RESULT_OK)
+
+            {
+
                 PaymentConfirmation confirm=data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
 
                 if (confirm!=null){
+
+
                     try{
+
+                        ProofOfPayment proofOfPayment = confirm.getProofOfPayment();
+
+                        String transactionId;
+                        String payPalPaymentId;
+
+                        if (proofOfPayment != null) {
+                            transactionId = proofOfPayment.getTransactionId();
+                            payPalPaymentId = proofOfPayment.getPaymentId();
+                        } else {
+                            transactionId = "123";
+                            payPalPaymentId = "123";
+                        }
+
+
+
                         String paymentDetails=confirm.toJSONObject().toString(4);
                         Log.i("paymentExample",paymentDetails);
+                        result = "success";
                         startActivity(new Intent(getApplicationContext(),ConfirmationActivity.class)
                                 .putExtra("PaymentDetails",paymentDetails)
+                                .putExtra("TransactionId", transactionId)
+                                .putExtra("PaypalPaymentId", payPalPaymentId)
                                 .putExtra("PaymentAmount",paymentAmount)
                                 .putExtra("ClientTypeID",ClientTypeID)
                                 .putExtra("DistributorID",DistributorID)
@@ -274,8 +311,8 @@ public class PayPalActivity extends AppCompatActivity {
                                 .putExtra("paymentId", PaymentId)
                                 .putExtra("LoginID",LoginID));
 
+                    } catch (JSONException e) {
 
-                    }catch (JSONException e){
                         result = "an extremely unlikely failure occurred";
                         Intent i = new Intent(getApplicationContext(), ConfirmationActivity.class);
                         i.putExtra("PaymentAmount", paymentAmount);
@@ -289,9 +326,12 @@ public class PayPalActivity extends AppCompatActivity {
                         i.putExtra("result", result);
                         startActivity(i);
                         Log.e("paymentAmount","an extremely unlikely failure occurred: ",e);
+
                     }
+
                 }
-            }else if (resultCode==Activity.RESULT_CANCELED){
+
+            } else if (resultCode == Activity.RESULT_CANCELED) {
                 Intent i = new Intent(getApplicationContext(), ConfirmationActivity.class);
                 result = "The user canceled.";
                 i.putExtra("PaymentAmount", paymentAmount);
@@ -369,10 +409,6 @@ public class PayPalActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        this.finish();
-        Intent intent=new Intent(PayPalActivity.this,DashBoardScreen.class);
-
-        startActivity(intent);
 
     }
 
