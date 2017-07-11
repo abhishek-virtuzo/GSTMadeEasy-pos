@@ -3,9 +3,9 @@ package com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.ConfirmRechargeActivity;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.OperatorClass;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.PlanClass;
+import com.google.gson.Gson;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.SelectActivationPlanActivity;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.ActivationPlanClass;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL;
 
 import org.apache.http.HttpEntity;
@@ -25,46 +25,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by Abhishek on 09-07-2017.
+ * Created by Eiraj on 7/10/2017.
  */
 
-public class ConfirmRecharge {
-
-    public String responseMessage;
-    public int responseCode;
+public class GetActivationPlans {
 
 
-    String paymnetId;
-    OperatorClass operator;
-    PlanClass plan;
-    String mobileno;
-    String email;
-    String zipcode;
-    String paypalPaymentId;
-    int rechargeVia;
-    String distributorId;
-    String loginId;
-    int iswallet;
+    public List<ActivationPlanClass> plansList;
+
+    String distributorID;
+    int networkID;
 
 
-    public ConfirmRecharge(String paymnetId, OperatorClass operator, PlanClass plan, String mobileno, String email, String zipcode,
-                           String paypalPaymentId, int rechargeVia, String distributorId, String loginId, int iswallet) {
+    public GetActivationPlans(String distributorID, int networkID) {
 
-        this.paymnetId = paymnetId;
-        this.operator = operator;
-        this.plan = plan;
-        this.mobileno = mobileno;
-        this.email = email;
-        this.zipcode = zipcode;
-        this.paypalPaymentId = paypalPaymentId;
-        this.rechargeVia = rechargeVia;
-        this.distributorId = distributorId;
-        this.loginId = loginId;
-        this.iswallet = iswallet;
-        new ConfirmRecharge.apitask().execute();
+        this.distributorID = distributorID;
+        this.networkID = networkID;
+
+        new apitask().execute();
 
     }
 
@@ -77,36 +59,11 @@ public class ConfirmRecharge {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            responseCode = -1;
+            plansList = new ArrayList<>();
 
-            String planDescription = plan.getProductDescription();
-
-            try {
-                planDescription = URLEncoder.encode(planDescription, "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-            url = URL.Server + "/Recharge" +
-                    "?PaymentID=" + paymnetId +
-                    "&NetworkID=" + operator.getVendorID() +
-                    "&TariffCode=" + plan.getTariffCode() +
-                    "&MobileNo=" + mobileno +
-                    "&TotalAmount=" + plan.getTotalAmount() +
-                    "&EmailID=abhishek.s@virtuzo.in" +
-                    "&RechargeAmount=" + plan.getRechargeAmount() +
-                    "&State=" +
-                    "&ZIPCode=" + zipcode +
-                    "&TxnID=" + paypalPaymentId +
-                    "&Tax=0" +
-                    "&Regulatery=" + plan.getRegulatory() +
-                    "&DistributorID=" + distributorId +
-                    "&LoginID=" + loginId +
-                    "&RechargeVia=" + rechargeVia +
-                    "&PlanDescription=" + planDescription +
-                    "IsWalet" + iswallet;
-
-            responseMessage = "Something went wromng!! Please try again later";
+            url = URL.Server + "/GetActivationPlan" +
+                    "?DistributorID=" + distributorID +
+                    "&NetworkID=" + networkID;
 
             Log.d("check", "inside API" + url);
 
@@ -121,13 +78,23 @@ public class ConfirmRecharge {
 
                 JSONObject jsonObject = getJSONFromUrlPost(url);
 
-                JSONArray responseArray = jsonObject.getJSONArray("Response");
-                JSONObject response = responseArray.getJSONObject(0);
-                responseCode = response.getInt("Responsecode");
-                responseMessage = response.getString("Response");
+                if (jsonObject != null) {
 
+                    JSONArray jsonarray = jsonObject.getJSONArray("Data");
 
+                    for (int i = 0; i < jsonarray.length(); i++) {
 
+                        ActivationPlanClass plan;
+                        Gson gson = new Gson();
+
+                        String jsonString = jsonarray.getJSONObject(i).toString();
+
+                        plan = gson.fromJson(jsonString, ActivationPlanClass.class);
+
+                        plansList.add(plan);
+
+                    }
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -140,7 +107,7 @@ public class ConfirmRecharge {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
 
-            ConfirmRechargeActivity.progressDialog.dismiss();
+            SelectActivationPlanActivity.progressDialog.dismiss();
 
         }
 

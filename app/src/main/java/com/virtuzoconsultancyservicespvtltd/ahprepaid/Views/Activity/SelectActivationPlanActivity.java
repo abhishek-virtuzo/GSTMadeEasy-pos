@@ -11,28 +11,25 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.GetPlans;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.GetActivationPlans;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.R;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Adapters.SelectPlanAdapter;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.PlanClass;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Adapters.SelectActionPlanAdapter;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.ActivationPlanClass;
 
 import java.util.ArrayList;
 
-public class SelectPlanActivity extends AppCompatActivity {
-
+public class SelectActivationPlanActivity extends AppCompatActivity {
     public static ProgressDialog progressDialog;
-    ArrayList<PlanClass> listOfPlans;
+    ArrayList<ActivationPlanClass> listOfPlans;
     RecyclerView recyclerView;
-    GetPlans getPlans;
-    private SelectPlanAdapter selectPlanAdapter;
+    GetActivationPlans getActivationPlans;
+    private SelectActionPlanAdapter selectPlanAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_plan);
-
-        setTitle("Select Plan");
-
+        setContentView(R.layout.activity_select_activation_plan);
         listOfPlans = new ArrayList<>();
 
         int vendorID = getIntent().getExtras().getInt("vendorId");
@@ -48,9 +45,9 @@ public class SelectPlanActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        selectPlanAdapter = new SelectPlanAdapter(listOfPlans, new SelectPlanAdapter.OnClickListener() {
+        selectPlanAdapter = new SelectActionPlanAdapter(listOfPlans, new SelectActionPlanAdapter.OnClickListener() {
             @Override
-            public void onItemClick(PlanClass plan) {
+            public void onItemClick(ActivationPlanClass plan) {
 
                 Gson gson = new Gson();
                 String json = gson.toJson(plan);
@@ -70,14 +67,13 @@ public class SelectPlanActivity extends AppCompatActivity {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
 
-                listOfPlans.addAll(getPlans.plansList);
+                listOfPlans.addAll(getActivationPlans.plansList);
                 selectPlanAdapter.notifyDataSetChanged();
 
             }
         });
 
-        getPlans = new GetPlans(distributorID, vendorID);
-
+        getActivationPlans = new GetActivationPlans(distributorID, vendorID);
 
     }
 }

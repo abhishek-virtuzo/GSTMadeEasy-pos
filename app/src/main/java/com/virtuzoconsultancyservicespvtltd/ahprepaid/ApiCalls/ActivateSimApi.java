@@ -1,12 +1,10 @@
 package com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.ConfirmRechargeActivity;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.OperatorClass;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.PlanClass;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.ActiveSIM;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -25,123 +23,70 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 /**
  * Created by Abhishek on 09-07-2017.
  */
 
-public class ConfirmRecharge {
-
-    public String responseMessage;
-    public int responseCode;
+public class ActivateSimApi {
 
 
-    String paymnetId;
-    OperatorClass operator;
-    PlanClass plan;
-    String mobileno;
-    String email;
-    String zipcode;
-    String paypalPaymentId;
-    int rechargeVia;
-    String distributorId;
-    String loginId;
-    int iswallet;
+    String plan, amount, email, operator, zipcode, simcardno;
+    String balance;
+    Context context;
 
+    public ActivateSimApi(Context context, String plan, String amount, String email, String operator, String zipcode, String simcardno) {
 
-    public ConfirmRecharge(String paymnetId, OperatorClass operator, PlanClass plan, String mobileno, String email, String zipcode,
-                           String paypalPaymentId, int rechargeVia, String distributorId, String loginId, int iswallet) {
-
-        this.paymnetId = paymnetId;
-        this.operator = operator;
+        this.context = context;
         this.plan = plan;
-        this.mobileno = mobileno;
+        this.amount = amount;
         this.email = email;
+        this.operator = operator;
         this.zipcode = zipcode;
-        this.paypalPaymentId = paypalPaymentId;
-        this.rechargeVia = rechargeVia;
-        this.distributorId = distributorId;
-        this.loginId = loginId;
-        this.iswallet = iswallet;
-        new ConfirmRecharge.apitask().execute();
-
+        this.simcardno = simcardno;
+        new ApiCall().execute();
     }
 
-
-    public class apitask extends AsyncTask<Object, Object, Void> {
-
+    public class ApiCall extends AsyncTask<Object, Object, Void> {
+        String errormesage;
         private String url;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            responseCode = -1;
-
-            String planDescription = plan.getProductDescription();
-
-            try {
-                planDescription = URLEncoder.encode(planDescription, "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-            url = URL.Server + "/Recharge" +
-                    "?PaymentID=" + paymnetId +
-                    "&NetworkID=" + operator.getVendorID() +
-                    "&TariffCode=" + plan.getTariffCode() +
-                    "&MobileNo=" + mobileno +
-                    "&TotalAmount=" + plan.getTotalAmount() +
-                    "&EmailID=abhishek.s@virtuzo.in" +
-                    "&RechargeAmount=" + plan.getRechargeAmount() +
-                    "&State=" +
-                    "&ZIPCode=" + zipcode +
-                    "&TxnID=" + paypalPaymentId +
-                    "&Tax=0" +
-                    "&Regulatery=" + plan.getRegulatory() +
-                    "&DistributorID=" + distributorId +
-                    "&LoginID=" + loginId +
-                    "&RechargeVia=" + rechargeVia +
-                    "&PlanDescription=" + planDescription +
-                    "IsWalet" + iswallet;
-
-            responseMessage = "Something went wromng!! Please try again later";
-
+            url = "";
             Log.d("check", "inside API" + url);
 
         }
 
         @Override
         protected Void doInBackground(Object... params) {
-
             Log.d("check", "on doinbackground...");
-
             try {
-
                 JSONObject jsonObject = getJSONFromUrlPost(url);
+                if (jsonObject != null) {
 
-                JSONArray responseArray = jsonObject.getJSONArray("Response");
-                JSONObject response = responseArray.getJSONObject(0);
-                responseCode = response.getInt("Responsecode");
-                responseMessage = response.getString("Response");
+                    JSONArray jsonarray = jsonObject.getJSONArray("Response");
 
+                    JSONObject jsonObject1 = jsonarray.getJSONObject(0);
+                    balance = jsonObject1.getString("Balance");
+
+                    Log.d("eiraj", "value of json object is..." + balance);
+                }
 
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            return null;
 
+            return null;
         }
 
         protected void onPostExecute(Void result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-
-            ConfirmRechargeActivity.progressDialog.dismiss();
-
+            ActiveSIM.progressDialog.dismiss();
         }
 
 
@@ -198,14 +143,14 @@ public class ConfirmRecharge {
                 Log.e("check", "Error converting result " + e.toString());
             }
             // try parse the string to a JSON object
-            JSONObject jObj = null;
-
+            JSONObject jObj = new JSONObject();
             try {
                 jObj = new JSONObject(json.replace("\\", ""));
             } catch (JSONException e) {
                 Log.e("check", "Error parsing data " + e.toString());
             }
             return jObj;
+
 
         }
 

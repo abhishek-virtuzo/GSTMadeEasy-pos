@@ -33,7 +33,7 @@ public class SelectPlanAdapter extends RecyclerView.Adapter<SelectPlanAdapter.My
         View itemView = null;
 
         itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.language, parent, false);
+                .inflate(R.layout.plan_recycle_view_row, parent, false);
         return new MyViewHolder(itemView);
     }
 
@@ -42,8 +42,17 @@ public class SelectPlanAdapter extends RecyclerView.Adapter<SelectPlanAdapter.My
 
         PlanClass plan = PlanList.get(position);
 
+        String rechargeAmountString = "Recharge Amount - " + plan.getCurrencySymbol() + " " + plan.getRechargeAmount();
+        String regulatoryString = "Regulatory(" + plan.getRegulatory() + "%) - " + plan.getCurrencySymbol() + " " + (plan.getRechargeAmount() * plan.getRegulatory() / 100);
+        String discountString = "Discount(" + plan.getDiscount() + "%) - " + plan.getCurrencySymbol() + " " + (plan.getRechargeAmount() * plan.getDiscount() / 100);
+        String totalAmountString = plan.getCurrencySymbol() + " " + plan.getTotalAmount();
+
         holder.bind(PlanList.get(position));
-        holder.planTextView.setText(plan.getPlanDescription());
+        holder.productDescriptionTextView.setText(plan.getProductDescription());
+        holder.rechargeAmountTextView.setText(rechargeAmountString);
+        holder.regulatoryTextView.setText(regulatoryString);
+        holder.discountTextView.setText(discountString);
+        holder.totalAmountTextView.setText(totalAmountString);
 
     }
 
@@ -59,18 +68,26 @@ public class SelectPlanAdapter extends RecyclerView.Adapter<SelectPlanAdapter.My
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView planTextView;
+
+        public TextView productDescriptionTextView;
+        public TextView rechargeAmountTextView;
+        public TextView regulatoryTextView;
+        public TextView discountTextView;
+        public TextView totalAmountTextView;
 
         public View myView;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            planTextView = (TextView) itemView.findViewById(R.id.language);
+
+            productDescriptionTextView = (TextView) itemView.findViewById(R.id.productDescriptionTextView);
+            rechargeAmountTextView = (TextView) itemView.findViewById(R.id.rechargeAmountTextView);
+            regulatoryTextView = (TextView) itemView.findViewById(R.id.regulatoryTextView);
+            discountTextView = (TextView) itemView.findViewById(R.id.discountTextView);
+            totalAmountTextView = (TextView) itemView.findViewById(R.id.totalAmountTextView);
 
             myView = itemView;
-
-
         }
 
         public void bind(final PlanClass hotelid) {

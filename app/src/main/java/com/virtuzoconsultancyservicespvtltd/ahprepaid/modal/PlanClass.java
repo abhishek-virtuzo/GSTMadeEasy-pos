@@ -15,6 +15,15 @@ public class PlanClass {
     double Discount;
     String PlanDescription;
     double TotalAmount;
+    int Month;
+
+    public int getMonth() {
+        return Month;
+    }
+
+    public void setMonth(int month) {
+        Month = month;
+    }
 
     public long getTariffCode() {
         return TariffCode;
@@ -87,4 +96,5 @@ public class PlanClass {
     public void setTotalAmount(double totalAmount) {
         TotalAmount = totalAmount;
     }
+
 }
