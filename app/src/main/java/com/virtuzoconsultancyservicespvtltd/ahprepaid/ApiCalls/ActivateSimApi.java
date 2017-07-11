@@ -4,7 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.ActiveSIM;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.ActivationConfirmActivity;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,19 +24,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  * Created by Abhishek on 09-07-2017.
  */
-
 public class ActivateSimApi {
 
 
+    public String response;
+    public int responsecode;
+    String clientid;
+    String tariffid;
+    String distributorid;
+    String loginid;
+    String iswallet;
+    String month;
     String plan, amount, email, operator, zipcode, simcardno;
     String balance;
     Context context;
 
-    public ActivateSimApi(Context context, String plan, String amount, String email, String operator, String zipcode, String simcardno) {
+    public ActivateSimApi(Context context, String plan, String amount, String email, String operator, String zipcode, String simcardno,
+                          String clientid, String loginid, String distributorid, String iswallet, String month, String tariffid) {
 
         this.context = context;
         this.plan = plan;
@@ -44,6 +54,12 @@ public class ActivateSimApi {
         this.operator = operator;
         this.zipcode = zipcode;
         this.simcardno = simcardno;
+        this.clientid = clientid;
+        this.loginid = loginid;
+        this.distributorid = distributorid;
+        this.iswallet = iswallet;
+        this.month = month;
+        this.tariffid = tariffid;
         new ApiCall().execute();
     }
 
@@ -54,7 +70,29 @@ public class ActivateSimApi {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            url = "";
+
+
+            try {
+                plan = URLEncoder.encode(plan, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            url = URL.Server + "/ActivateSIMForLycaMobile?" +
+                    "ClientTypeID=" + clientid +
+                    "&DistributorID=" + distributorid +
+                    "&TariffID=" + tariffid +
+                    "&SimNumber=" + simcardno +
+                    "&TariffAmount=" + amount +
+                    "&LoginID=" + loginid +
+                    "&EmailID=" + email +
+                    "&ZipCode=" + zipcode +
+                    "&Month=" + month +
+                    "&IsWalet=" + iswallet +
+                    "&TariffPlan=" + plan;
+
+
+
+
             Log.d("check", "inside API" + url);
 
         }
@@ -69,9 +107,10 @@ public class ActivateSimApi {
                     JSONArray jsonarray = jsonObject.getJSONArray("Response");
 
                     JSONObject jsonObject1 = jsonarray.getJSONObject(0);
-                    balance = jsonObject1.getString("Balance");
+                    response = jsonObject1.getString("Message");
+                    responsecode = jsonObject1.getInt("Responsecode");
 
-                    Log.d("eiraj", "value of json object is..." + balance);
+                    Log.d("eiraj", "value of json object is..." + response);
                 }
 
 
@@ -86,7 +125,7 @@ public class ActivateSimApi {
         protected void onPostExecute(Void result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-            ActiveSIM.progressDialog.dismiss();
+            ActivationConfirmActivity.progressDialog.dismiss();
         }
 
 

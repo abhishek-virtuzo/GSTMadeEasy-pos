@@ -280,7 +280,7 @@ public class DashBoardScreen extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        currentBalance.setText("Loadind..");
+        currentBalance.setText("Loading..");
         setBalance();
     }
 

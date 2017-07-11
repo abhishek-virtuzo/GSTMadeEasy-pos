@@ -2,14 +2,18 @@ package com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.ConfirmRecharge;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.DashBoardScreen;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.R;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.OperatorClass;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.PlanClass;
@@ -25,6 +29,8 @@ public class ConfirmRechargeActivity extends AppCompatActivity {
     TextView paymentAmountTextView;
     TextView paymentStatusTextView;
     TextView paymentIdTextView;
+
+    Button goToDashboardButton;
 
     String paymentId;
     String paypalPaymentId;
@@ -97,6 +103,8 @@ public class ConfirmRechargeActivity extends AppCompatActivity {
         paymentStatusTextView = (TextView) findViewById(R.id.paymentStatusTextView);
         paymentIdTextView = (TextView) findViewById(R.id.paymentIdTextView);
 
+        goToDashboardButton = (Button) findViewById(R.id.goToDashboardButton);
+
     }
 
     private void initGuiBehaviour() {
@@ -109,11 +117,13 @@ public class ConfirmRechargeActivity extends AppCompatActivity {
 
                     paymentStatusTextView.setText("Success");
                     messageImageView.setImageResource(R.drawable.smile);
+                    messageTextView.setText("Conragatulations, Your recharge was successful");
 
                 } else {
 
                     paymentStatusTextView.setText("Failure");
                     messageImageView.setImageResource(R.drawable.sad);
+                    messageTextView.setText(confirmRecharge.responseMessage);
 
                 }
 
@@ -124,6 +134,20 @@ public class ConfirmRechargeActivity extends AppCompatActivity {
 
             }
         });
+
+        goToDashboardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), DashBoardScreen.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+
+                finish();
+
+            }
+        });
+
 
     }
 

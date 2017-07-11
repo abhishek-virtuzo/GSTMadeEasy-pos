@@ -52,7 +52,7 @@ public class GetOperators {
 
             operatorList = new ArrayList<>();
 
-            url = "http://virtuzo.in/AhprepaidService/AhprepaidAPI_Json.svc/GetNetwork";//"http://virtuzo.in/AhprepaidService/AhprepaidAPI_Json.svc/InitiateTopupPayment?loginID="+loginid+"&DistributorID="+distributorid+"&ChargedAmount="+total;//http://virtuzo.in/AhprepaidService/AhprepaidAPI_Json.svc/InitiateTopupPayment?loginID=1&DistributorID=1&ChargedAmount=1
+            url = com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL.Server + "/GetNetwork";//"http://virtuzo.in/AhprepaidService/AhprepaidAPI_Json.svc/InitiateTopupPayment?loginID="+loginid+"&DistributorID="+distributorid+"&ChargedAmount="+total;//http://virtuzo.in/AhprepaidService/AhprepaidAPI_Json.svc/InitiateTopupPayment?loginID=1&DistributorID=1&ChargedAmount=1
             Log.d("check", "inside API" + url);
 
         }

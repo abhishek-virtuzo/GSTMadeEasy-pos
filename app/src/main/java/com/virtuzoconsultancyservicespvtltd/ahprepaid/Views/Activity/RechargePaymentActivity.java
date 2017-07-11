@@ -34,7 +34,7 @@ public class RechargePaymentActivity extends AppCompatActivity {
     public static ProgressDialog walletProgressDialog;
     public static ProgressDialog paypalProgressDialog;
     private static PayPalConfiguration config = new PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
+            .environment(PayPalConfig.ENVIRONMENT)
             .clientId(PayPalConfig.PAYPAL_CLIENT_ID);
     InitiateWalletRecharge initiateWalletRecharge;
     InitiatePayPalRecharge initiatePayPalRecharge;

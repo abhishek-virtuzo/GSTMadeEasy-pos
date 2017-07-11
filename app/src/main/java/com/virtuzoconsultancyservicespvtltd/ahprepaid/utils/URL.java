@@ -5,7 +5,7 @@ package com.virtuzoconsultancyservicespvtltd.ahprepaid.utils;
  */
 public interface URL {
 
-    String MainURL = "http://virtuzo.in/AhprepaidTestService/AhprepaidAPI_Json.svc";
+    String MainURL = "http://virtuzo.in/AhprepaidService/AhprepaidAPI_Json.svc";
 
     String TestURL = "http://virtuzo.in/AHPrepaidMultipleNetworkService/AhprepaidAPI_Json.svc";
 

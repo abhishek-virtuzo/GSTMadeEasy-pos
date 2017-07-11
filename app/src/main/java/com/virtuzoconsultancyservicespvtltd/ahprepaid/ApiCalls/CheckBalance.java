@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -53,7 +55,7 @@ public class CheckBalance {
         protected void onPreExecute() {
             super.onPreExecute();
 //            url = "http://virtuzo.in/AhprepaidService/AhprepaidAPI_Json.svc/CheckBalance?DistributorID=" + distributorid;
-            url = "http://virtuzo.in/AHPrepaidMultipleNetworkService/AhprepaidAPI_Json.svc/CheckBalance?DistributorID=" + distributorid;
+            url = URL.Server + "/CheckBalance?DistributorID=" + distributorid;
             Log.d("check", "inside API" + url);
 
         }

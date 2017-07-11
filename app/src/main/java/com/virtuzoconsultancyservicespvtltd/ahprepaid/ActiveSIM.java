@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.google.gson.Gson;
@@ -20,7 +21,6 @@ import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.ActivationPlanClass;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.OperatorClass;
 
 import java.util.ArrayList;
-
 public class ActiveSIM extends AppCompatActivity {
 
     private static final String TAG = ActiveSIM.class.getSimpleName();
@@ -36,6 +36,7 @@ public class ActiveSIM extends AppCompatActivity {
     EditText zipcodeEditText;
     EditText planEditText;
     EditText amountEditText;
+    EditText cityEditText;
     View operatorSelectView;
     View planSelectView;
     ActivationPlanClass selectedPlan;
@@ -43,7 +44,8 @@ public class ActiveSIM extends AppCompatActivity {
     Boolean isOperatorSelected;
     Boolean isPlanSelected;
     Boolean isZipcodeEntered;
-    String operator, simCard, zipCode, plan, Amount, email, clienttypeid, distrbutorid, tariffid, loginid, month;
+    RelativeLayout relativecityEdit;
+    String operator, simCard, zipCode, Amount, email, clienttypeid, distrbutorid, loginid, month;
     ArrayList<String> listTraiffcode;
     ArrayList<String> listTraiffId;
     ArrayAdapter<String> adapter;
@@ -65,7 +67,7 @@ public class ActiveSIM extends AppCompatActivity {
         distrbutorid = getIntent().getStringExtra("DistributorID");
         loginid = getIntent().getStringExtra("LoginID");
 
-
+        // relativecityEdit=(RelativeLayout)findViewById(R.id.relativehide);
         //   progressDialog = new ProgressDialog(this);
         initGUI();
         setGUIBehaviour();
@@ -89,6 +91,7 @@ public class ActiveSIM extends AppCompatActivity {
         zipcodeEditText = (EditText) findViewById(R.id.zipcodeEditText);
         planEditText = (EditText) findViewById(R.id.planEditText);
         amountEditText = (EditText) findViewById(R.id.amountEditText);
+        cityEditText = (EditText) findViewById(R.id.city);
 
         operatorSelectView = (View) findViewById(R.id.operatorSelectView);
         planSelectView = (View) findViewById(R.id.planSelectView);
@@ -108,11 +111,14 @@ public class ActiveSIM extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), SelectOperatorActivity.class);
 
                     startActivityForResult(intent, OPERATOR_SELECT_REQUEST_CODE);
+
                 } else {
                     showAlert("You are not connected to the Internet");
                 }
             }
         });
+
+
         planSelectView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,19 +148,29 @@ public class ActiveSIM extends AppCompatActivity {
             public void onClick(View view) {
                 String zipcode = String.valueOf(zipcodeEditText.getText().toString());
                 String simcard = simCardNO.getText().toString();
+                String plan = selectedPlan.getTariffPlan();
+                String tarriffid = String.valueOf(selectedPlan.getTariffTypeID());
                 String month = selectedPlan.getMonths();
-                if (simCardNO.length() != 2) {
-                    showAlert("Enter a valid 20 digit simcard no");
-                } else if (!isOperatorSelected) {
+
+                if (!isOperatorSelected) {
                     showAlert("Please select an operator");
+                } else if (simCardNO.length() != 19) {
+                    showAlert("Enter a valid 19 digit simcard no");
                 } else if (!isPlanSelected) {
                     showAlert("Please select a plan");
-                } else if (zipcode.length() != 2) {
+                } else if (zipcode.length() != 5) {
                     showAlert("Please enter a valid zipcode");
+
+                } else if (selectedOperator.getVendorID() != 13) {
+                    if (cityEditText.getText().toString().isEmpty()) {
+                        showAlert("Please enter city Name");
+                    }
                 } else {
                     if ((new ConnectionDetector(getApplicationContext())).isConnectingToInternet()) {
                         Intent intent = new Intent(ActiveSIM.this, ActivateSimPaymentActivity.class);
-
+//                        if(selectedOperator.getVendorID()!=13){
+//                            intent.putExtra("city",cityEditText.getText().toString());
+//                        }
                         intent.putExtra("plan", plan);
                         intent.putExtra("Amount", Amount);
                         intent.putExtra("email", email);
@@ -164,7 +180,8 @@ public class ActiveSIM extends AppCompatActivity {
                         intent.putExtra("ClientTypeID", clienttypeid);
                         intent.putExtra("DistributorID", distrbutorid);
                         intent.putExtra("LoginID", loginid);
-                        intent.putExtra("months", month);
+                        intent.putExtra("month", month);
+                        intent.putExtra("tariffid", tarriffid);
 
                         startActivity(intent);
                         //          progressDialog.show();
@@ -204,6 +221,12 @@ public class ActiveSIM extends AppCompatActivity {
                 selectedOperator = gson.fromJson(json, OperatorClass.class);
                 operatorEditText.setText(selectedOperator.getVendorName());
                 operator = selectedOperator.getVendorName();
+//                if(selectedOperator.getVendorID()==13){
+//                   relativecityEdit.setVisibility(View.INVISIBLE);
+//                }
+//                else{
+//                    relativecityEdit.setVisibility(View.VISIBLE);
+//                }
 
                 isOperatorSelected = true;
 

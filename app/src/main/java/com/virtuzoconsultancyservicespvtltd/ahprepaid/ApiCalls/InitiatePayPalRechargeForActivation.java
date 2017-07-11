@@ -3,9 +3,7 @@ package com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.ConfirmRechargeActivity;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.OperatorClass;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.PlanClass;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.ActivateSimPaymentActivity;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL;
 
 import org.apache.http.HttpEntity;
@@ -25,88 +23,45 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 /**
- * Created by Abhishek on 09-07-2017.
+ * Created by Abhishek on 08-07-2017.
  */
 
-public class ConfirmRecharge {
+public class InitiatePayPalRechargeForActivation {
 
-    public String responseMessage;
-    public int responseCode;
+    public String paymentID;
+    public int status;
+    String distributorID;
+    String loginID;
+    Float amount;
+    String TariffId;
 
+    public InitiatePayPalRechargeForActivation(String loginID, String distributorID, Float amount, String TariffId) {
+        this.TariffId = TariffId;
+        this.loginID = loginID;
+        this.distributorID = distributorID;
+        this.amount = amount;
 
-    String paymnetId;
-    OperatorClass operator;
-    PlanClass plan;
-    String mobileno;
-    String email;
-    String zipcode;
-    String paypalPaymentId;
-    int rechargeVia;
-    String distributorId;
-    String loginId;
-    int iswallet;
-
-
-    public ConfirmRecharge(String paymnetId, OperatorClass operator, PlanClass plan, String mobileno, String email, String zipcode,
-                           String paypalPaymentId, int rechargeVia, String distributorId, String loginId, int iswallet) {
-
-        this.paymnetId = paymnetId;
-        this.operator = operator;
-        this.plan = plan;
-        this.mobileno = mobileno;
-        this.email = email;
-        this.zipcode = zipcode;
-        this.paypalPaymentId = paypalPaymentId;
-        this.rechargeVia = rechargeVia;
-        this.distributorId = distributorId;
-        this.loginId = loginId;
-        this.iswallet = iswallet;
-        new ConfirmRecharge.apitask().execute();
-
+        new InitiatePayPalRechargeApiCall().execute();
     }
 
-
-    public class apitask extends AsyncTask<Object, Object, Void> {
-
+    public class InitiatePayPalRechargeApiCall extends AsyncTask<Object, Object, Void> {
+        String errormesage;
         private String url;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            responseCode = -1;
+            url = URL.Server + "/InitiatePaymentPaypalAcivationForLycaMobile?" +
+                    "loginID=" + loginID +
+                    "&DistributorID=" + distributorID +
+                    "&ChargedAmount=" + amount +
+                    "&TariffID=" + TariffId;
 
-            String planDescription = plan.getProductDescription();
 
-            try {
-                planDescription = URLEncoder.encode(planDescription, "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-            url = URL.Server + "/Recharge" +
-                    "?PaymentID=" + paymnetId +
-                    "&NetworkID=" + operator.getVendorID() +
-                    "&TariffCode=" + plan.getTariffCode() +
-                    "&MobileNo=" + mobileno +
-                    "&TotalAmount=" + plan.getTotalAmount() +
-                    "&EmailID=" + email +
-                    "&RechargeAmount=" + plan.getRechargeAmount() +
-                    "&State=" +
-                    "&ZIPCode=" + zipcode +
-                    "&TxnID=" + paypalPaymentId +
-                    "&Tax=0" +
-                    "&Regulatery=" + plan.getRegulatory() +
-                    "&DistributorID=" + distributorId +
-                    "&LoginID=" + loginId +
-                    "&RechargeVia=" + rechargeVia +
-                    "&PlanDescription=" + planDescription +
-                    "&IsWalet=" + iswallet;
-
-            responseMessage = "Something went wromng!! Please try again later";
+            status = -1;
 
             Log.d("check", "inside API" + url);
 
@@ -114,33 +69,44 @@ public class ConfirmRecharge {
 
         @Override
         protected Void doInBackground(Object... params) {
-
             Log.d("check", "on doinbackground...");
-
             try {
-
                 JSONObject jsonObject = getJSONFromUrlPost(url);
+                if (jsonObject != null) {
 
-                JSONArray responseArray = jsonObject.getJSONArray("Response");
-                JSONObject response = responseArray.getJSONObject(0);
-                responseCode = response.getInt("Responsecode");
-                responseMessage = response.getString("Response");
+                    JSONArray responseArray = jsonObject.getJSONArray("Response");
+                    JSONObject response = responseArray.getJSONObject(0);
+                    int responseCode = response.getInt("Responsecode");
 
+                    if (responseCode == 0) {
+
+                        JSONArray jsonarray = jsonObject.getJSONArray("Data");
+                        JSONObject jsonObject1 = jsonarray.getJSONObject(0);
+                        paymentID = jsonObject1.getString("PaymentId");
+                        status = 0;
+
+                    }
+
+                    if (responseCode == 1) {
+                        status = 1;
+                    }
+
+                }
 
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            return null;
 
+            return null;
         }
 
         protected void onPostExecute(Void result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
 
-            ConfirmRechargeActivity.progressDialog.dismiss();
+            ActivateSimPaymentActivity.paypalProgressDialog.dismiss();
 
         }
 
@@ -198,14 +164,14 @@ public class ConfirmRecharge {
                 Log.e("check", "Error converting result " + e.toString());
             }
             // try parse the string to a JSON object
-            JSONObject jObj = null;
-
+            JSONObject jObj = new JSONObject();
             try {
                 jObj = new JSONObject(json.replace("\\", ""));
             } catch (JSONException e) {
                 Log.e("check", "Error parsing data " + e.toString());
             }
             return jObj;
+
 
         }
 

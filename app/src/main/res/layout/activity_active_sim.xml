@@ -10,10 +10,9 @@
         android:layout_margin="10dp"
         android:padding="10dp"
         tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.ActiveSIM">
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -66,10 +65,11 @@
 
                 <EditText
                     android:id="@+id/simcardno"
-                    android:layout_width="match_parent"
+                android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:background="@null"
                     android:hint="Enter Sim card number"
+                    android:inputType="number"
                     android:paddingLeft="5dp"
                     android:singleLine="true"
                     android:textColor="#000000" />
@@ -93,12 +93,12 @@
                     android:layout_height="35dp"
                     android:background="@null"
                     android:hint="Zip Code"
+                    android:inputType="number"
                     android:paddingLeft="5dp"
                     android:singleLine="true"
                     android:textColor="#000000" />
 
             </android.support.design.widget.TextInputLayout>
-
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
@@ -138,7 +138,6 @@
                     android:backgroundTint="#000000" />
 
             </RelativeLayout>
-
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
@@ -204,15 +203,48 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <RelativeLayout
+                android:id="@+id/relativehide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="10dp"
+                    android:textColor="#000000">
+
+                    <EditText
+                        android:id="@+id/city"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:hint="city"
+                        android:paddingLeft="20dp"
+                        android:singleLine="true"
+                        android:textColor="#000000" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/proceed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
+
+
                 android:background="@drawable/edittext_shapeee"
                 android:padding="5dp"
                 android:text="Active Using  Account Balance"
@@ -220,6 +252,9 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
+
         </LinearLayout>
+
     </RelativeLayout>
+
 </ScrollView>

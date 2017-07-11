@@ -19,25 +19,25 @@ import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 import com.paypal.android.sdk.payments.ProofOfPayment;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.InitiatePayPalRecharge;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.InitiatePayPalRechargeForActivation;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.InitiateWalletRecharge;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.ConnectionDetector;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.R;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.OperatorClass;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.modal.PlanClass;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.PayPalConfig;
 
 import java.math.BigDecimal;
-
 public class ActivateSimPaymentActivity extends AppCompatActivity {
 
     public static final int PAYPAL_REQUEST_CODE = 123;
     public static ProgressDialog walletProgressDialog;
     public static ProgressDialog paypalProgressDialog;
     private static PayPalConfiguration config = new PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
+            .environment(PayPalConfig.ENVIRONMENT)
             .clientId(PayPalConfig.PAYPAL_CLIENT_ID);
     InitiateWalletRecharge initiateWalletRecharge;
-    InitiatePayPalRecharge initiatePayPalRecharge;
+    InitiatePayPalRechargeForActivation initiatePayPalRechargeForActivation;
     String balance;
     double amountToBePaid;
     String zipcode;
@@ -58,14 +58,22 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
     String email;
     String clienttypeid, distrbutorid, loginid;
     String month;
+    String tariffid;
+    String city;
 
-
+    OperatorClass selectedOperator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activate_payment);
 
+
         initVariables();
+//
+//        if(selectedOperator.getVendorID()!=13){
+//            city=getIntent().getStringExtra("city");
+//        }
+
 
         month = getIntent().getStringExtra("month");
         operators = getIntent().getStringExtra("operator");
@@ -77,6 +85,7 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
         clienttypeid = getIntent().getStringExtra("ClientTypeID");
         distrbutorid = getIntent().getStringExtra("DistributorID");
         loginid = getIntent().getStringExtra("LoginID");
+        tariffid = getIntent().getStringExtra("tariffid");
 
 
         walletProgressDialog = new ProgressDialog(this);
@@ -99,7 +108,7 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
         paypalProgressDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                if (initiatePayPalRecharge.status == 0) {
+                if (initiatePayPalRechargeForActivation.status == 0) {
 
                     PayPalPayment payment = new PayPalPayment(new BigDecimal(String.valueOf(amountToBePaid)), "USD", "Something", PayPalPayment.PAYMENT_INTENT_SALE);
                     Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
@@ -107,7 +116,7 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
                     intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
                     startActivityForResult(intent, PAYPAL_REQUEST_CODE);
 
-                } else if (initiatePayPalRecharge.status == 1) {
+                } else if (initiatePayPalRechargeForActivation.status == 1) {
                     showAlert("Something went wrong. Please try later!!");
                 } else {
                     showAlert("Something went wrong. Please try later!!");
@@ -120,48 +129,64 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 paypalProgressDialog.show();
-                amountToBePaid = Double.parseDouble(Amount);
-                initiatePayPalRecharge = new InitiatePayPalRecharge(loginid, distributorID, (float) amountToBePaid);
+                //  amountToBePaid= Double.parseDouble(Amount);
+
+                if ((new ConnectionDetector(getApplicationContext())).isConnectingToInternet()) {
+                    initiatePayPalRechargeForActivation = new InitiatePayPalRechargeForActivation(loginid, distrbutorid, (float) amountToBePaid, tariffid);
+                } else {
+                    showAlert("You are not connected to the Internet");
+                }
+            }
+
+
+        });
+        paypalProgressDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                getPayment();
             }
 
             private void getPayment() {
-
-
+                PayPalPayment payment = new PayPalPayment(new BigDecimal(String.valueOf(Amount)), "USD", "Something", PayPalPayment.PAYMENT_INTENT_SALE);
+                Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
+                intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+                intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
+                startActivityForResult(intent, PAYPAL_REQUEST_CODE);
             }
         });
 
-        walletProgressDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-
-                if (initiateWalletRecharge.status == 0) {
-
-                    Intent intent = new Intent(getApplicationContext(), ConfirmRechargeActivity.class);
-
-                    Gson gson = new Gson();
-
-                    String operatorString = gson.toJson(operator);
-                    String planString = gson.toJson(plan);
-
-                    intent.putExtra("paymentId", initiateWalletRecharge.paymentID);
-                    intent.putExtra("mobileno", mobileno);
-                    intent.putExtra("operator", operatorString);
-                    intent.putExtra("plan", planString);
-                    intent.putExtra("zipcode", zipcode);
-                    intent.putExtra("distributorId", distributorID);
-                    intent.putExtra("paymentType", "wallet");
-                    startActivity(intent);
-
-
-                } else if (initiateWalletRecharge.status == 1) {
-                    showAlert("Your wallet has insufficient balance");
-                } else {
-                    showAlert("Something went wrong. Please try later!!");
-                }
-
-
-            }
-        });
+//        walletProgressDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//            @Override
+//            public void onDismiss(DialogInterface dialog) {
+//
+//                if (initiateWalletRecharge.status == 0) {
+//
+//                    Intent intent = new Intent(getApplicationContext(), ConfirmRechargeActivity.class);
+//
+//                    Gson gson = new Gson();
+//
+//                    String operatorString = gson.toJson(operator);
+//                    String planString = gson.toJson(plan);
+//
+//                    intent.putExtra("paymentId", initiateWalletRecharge.paymentID);
+//                    intent.putExtra("mobileno", mobileno);
+//                    intent.putExtra("operator", operatorString);
+//                    intent.putExtra("plan", planString);
+//                    intent.putExtra("zipcode", zipcode);
+//                    intent.putExtra("distributorId", distributorID);
+//                    intent.putExtra("paymentType", "wallet");
+//                    startActivity(intent);
+//
+//
+//                } else if (initiateWalletRecharge.status == 1) {
+//                    showAlert("Your wallet has insufficient balance");
+//                } else {
+//                    showAlert("Something went wrong. Please try later!!");
+//                }
+//
+//
+//            }
+//        });
 
 
         walletPaymentButton.setOnClickListener(new View.OnClickListener() {
@@ -169,8 +194,25 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 amountToBePaid = Double.parseDouble(Amount);
                 //    initiateWalletRecharge = new InitiateWalletRecharge(clienttypeid,distrbutorid,simCard, (float) amountToBePaid,loginid,email,zipcode,month,1,plan);
-                walletProgressDialog.show();
+                // walletProgressDialog.show();
 
+                String paymenttype = "wallet";
+                Intent intent = new Intent(getApplicationContext(), ActivationConfirmActivity.class);
+                intent.putExtra("plan", plans);
+
+                intent.putExtra("Amount", Amount);
+                intent.putExtra("email", email);
+                intent.putExtra("operator", operators);
+                intent.putExtra("zipcode", zipCode);
+                intent.putExtra("simCard", simCard);
+                intent.putExtra("ClientTypeID", clienttypeid);
+                intent.putExtra("DistributorID", distrbutorid);
+                intent.putExtra("LoginID", loginid);
+                intent.putExtra("months", month);
+                intent.putExtra("paymenttype", paymenttype);
+                intent.putExtra("tariffid", tariffid);
+
+                startActivity(intent);
             }
         });
 
@@ -205,6 +247,7 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PAYPAL_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
+                String paymenttype = "paypal";
                 PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
 
                 if (confirm != null) {
@@ -224,21 +267,27 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
                         }
 
 
-                        Intent intent = new Intent(getApplicationContext(), ConfirmRechargeActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), ActivationConfirmActivity.class);
 
                         Gson gson = new Gson();
 
                         String operatorString = gson.toJson(operator);
                         String planString = gson.toJson(plan);
 
-                        intent.putExtra("paymentId", initiatePayPalRecharge.paymentID);
-                        intent.putExtra("mobileno", mobileno);
-                        intent.putExtra("operator", operatorString);
-                        intent.putExtra("TransactionId", transactionId);
+                        intent.putExtra("paymentId", initiatePayPalRechargeForActivation.paymentID);
+                        intent.putExtra("plan", plans);
+                        intent.putExtra("Amount", Amount);
+                        intent.putExtra("email", email);
+                        intent.putExtra("operator", operators);
+                        intent.putExtra("zipcode", zipCode);
+                        intent.putExtra("simCard", simCard);
+                        intent.putExtra("ClientTypeID", clienttypeid);
+                        intent.putExtra("DistributorID", distrbutorid);
+                        intent.putExtra("LoginID", loginid);
+                        intent.putExtra("months", month);
+                        intent.putExtra("paymenttype", paymenttype);
+                        intent.putExtra("tariffid", tariffid);
                         intent.putExtra("PaypalPaymentId", payPalPaymentId);
-                        intent.putExtra("plan", planString);
-                        intent.putExtra("zipcode", zipcode);
-                        intent.putExtra("distributorId", distributorID);
                         intent.putExtra("paymentType", "paypal");
                         startActivity(intent);
                     } catch (Exception c) {
@@ -247,6 +296,7 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
 
                 }
             } else if (resultCode == Activity.RESULT_CANCELED) {
+
                 Log.i("paymentExample", "The user canceled.");
 
             } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
@@ -255,6 +305,7 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
             }
         }
     }
+
 //        @Override
 //        public void onStart() {
 //            super.onStart();

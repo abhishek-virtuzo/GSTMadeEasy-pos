@@ -86,7 +86,10 @@
         <activity android:name=".Views.Activity.RechargePaymentActivity" />
         <activity android:name=".Views.Activity.ConfirmRechargeActivity" />
         <activity android:name=".Views.Activity.ActivateSimPaymentActivity" />
-        <activity android:name=".Views.Activity.SelectActivationPlanActivity"></activity>
+        <activity android:name=".Views.Activity.SelectActivationPlanActivity" />
+        <activity android:name=".Views.Activity.ActivationConfirmActivity" />
+
+
     </application>
 
 </manifest>
