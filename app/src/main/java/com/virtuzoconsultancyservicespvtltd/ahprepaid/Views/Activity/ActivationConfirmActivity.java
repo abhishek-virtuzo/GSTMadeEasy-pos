@@ -9,10 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.ActivateSimApi;
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.ActivateSimApiPaypal;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.ActivateSimApiPaypalH20;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.ActivateSimApiPaypalLycaa;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.ActivateSimApiWalletH20;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls.ActivateSimApiWalletLycaa;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.ConnectionDetector;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.DashBoardScreen;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.R;
@@ -36,10 +39,19 @@ public class ActivationConfirmActivity extends AppCompatActivity {
     String tariffid;
     String paypalStatus;
     String paymentid;
+    String city;
+    String vendorid;
 
-    ActivateSimApi activateSimApi;
-    ActivateSimApiPaypal activateSimApiPaypal;
+    ActivateSimApiWalletLycaa activateSimApiWalletLycaa;
+    ActivateSimApiPaypalLycaa activateSimApiPaypalLycaa;
+
+
+    ActivateSimApiPaypalH20 activateSimApiPaypalH20;
+    ActivateSimApiWalletH20 activateSimApiWalletH20;
+
     TextView messageShow;
+
+    LinearLayout linearLayout;
 
 
     TextView amountShowPaypal;
@@ -52,6 +64,9 @@ public class ActivationConfirmActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activation_confirm);
+
+        city = getIntent().getStringExtra("city");
+        vendorid = getIntent().getStringExtra("vendorid");
         month = getIntent().getStringExtra("months");
         operators = getIntent().getStringExtra("operator");
         simCard = getIntent().getStringExtra("simCard");
@@ -72,7 +87,9 @@ public class ActivationConfirmActivity extends AppCompatActivity {
         statusShowPaypal = (TextView) findViewById(R.id.paymentStatus4);
         amountShowPaypal = (TextView) findViewById(R.id.paymentAmount4);
         idShowPaypal = (TextView) findViewById(R.id.paymentId4);
+        amountShowPaypal.setText(Amount);
 
+        linearLayout = (LinearLayout) findViewById(R.id.linearLayouthide);
         gobackDashboard = (Button) findViewById(R.id.dashBoardButton4);
 
 
@@ -86,9 +103,15 @@ public class ActivationConfirmActivity extends AppCompatActivity {
             progressDialog.setCancelable(false);
             progressDialog.setCanceledOnTouchOutside(false);
             if ((new ConnectionDetector(getApplicationContext())).isConnectingToInternet()) {
-                activateSimApi = new ActivateSimApi(getApplicationContext(), plans, Amount, email, operators,
-                        zipCode, simCard, clienttypeid, loginid, distrbutorid,
-                        iswallet, month, tariffid);
+                if (vendorid.equals("13")) {
+                    activateSimApiWalletLycaa = new ActivateSimApiWalletLycaa(getApplicationContext(), plans, Amount, email, operators,
+                            zipCode, simCard, clienttypeid, loginid, distrbutorid,
+                            iswallet, month, tariffid);
+                } else {
+                    activateSimApiWalletH20 = new ActivateSimApiWalletH20(getApplicationContext(), plans, Amount, email, operators,
+                            zipCode, simCard, clienttypeid, loginid, distrbutorid,
+                            iswallet, city, tariffid);
+                }
             } else {
                 showAlert("You are not connected to the Internet");
             }
@@ -98,13 +121,20 @@ public class ActivationConfirmActivity extends AppCompatActivity {
             progressDialog2.show();
             progressDialog2.setCancelable(false);
             progressDialog2.setCanceledOnTouchOutside(false);
-
+            linearLayout.setVisibility(View.VISIBLE);
             paymentid = getIntent().getStringExtra("paymentId");
+            idShowPaypal.setText(paymentid);
 
             if ((new ConnectionDetector(getApplicationContext())).isConnectingToInternet()) {
-                activateSimApiPaypal = new ActivateSimApiPaypal(getApplicationContext(), plans, Amount, email, operators,
-                        zipCode, simCard, clienttypeid, loginid, distrbutorid,
-                        iswallet, month, tariffid, paymentid);
+                if (vendorid.equals("13")) {
+                    activateSimApiPaypalLycaa = new ActivateSimApiPaypalLycaa(getApplicationContext(), plans, Amount, email, operators,
+                            zipCode, simCard, clienttypeid, loginid, distrbutorid,
+                            iswallet, month, tariffid, paymentid);
+                } else {
+                    activateSimApiPaypalH20 = new ActivateSimApiPaypalH20(getApplicationContext(), plans, Amount, email, operators,
+                            zipCode, simCard, clienttypeid, loginid, distrbutorid,
+                            iswallet, city, tariffid, paymentid);
+                }
             } else {
                 showAlert("You are not connected to the Internet");
             }
@@ -123,10 +153,19 @@ public class ActivationConfirmActivity extends AppCompatActivity {
 
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
-                messageShow.setText(activateSimApi.response);
+                int response;
+                if (vendorid.equals("13")) {
+                    messageShow.setText(activateSimApiWalletLycaa.response);
+                    response = activateSimApiWalletLycaa.responsecode;
+                } else {
+                    messageShow.setText(activateSimApiWalletH20.response);
+                    response = activateSimApiWalletH20.responsecode;
+                }
                 idShowPaypal.setVisibility(View.INVISIBLE);
                 amountShowPaypal.setVisibility(View.INVISIBLE);
-                if (activateSimApi.responsecode == 0) {
+
+
+                if (response == 0) {
                     setImageResponse.setImageResource(R.drawable.smile);
 
                 } else {
@@ -142,24 +181,27 @@ public class ActivationConfirmActivity extends AppCompatActivity {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
 
-                //  idShowPaypal.setText(paymentid);
-                //    amountShowPaypal.setText(Amount);
-                //  messageShow.setText(activateSimApi.response);
-                if (activateSimApiPaypal.responsecode == 0) {
+                int response;
+                if (vendorid.equals("13")) {
+                    messageShow.setText(activateSimApiPaypalLycaa.response);
+                    response = activateSimApiPaypalLycaa.responsecode;
+
+                } else {
+                    messageShow.setText(activateSimApiPaypalH20.response);
+                    response = activateSimApiPaypalH20.responsecode;
+
+                }
+                if (response == 0) {
                     setImageResponse.setImageResource(R.drawable.smile);
-                    messageShow.setText(activateSimApiPaypal.response);
-                    idShowPaypal.setText(paymentid);
                     statusShowPaypal.setText("Success");
-                    amountShowPaypal.setText(Amount);
 
                 } else {
                     setImageResponse.setImageResource(R.drawable.sad);
-                    messageShow.setText(activateSimApiPaypal.response);
-                    idShowPaypal.setText(paymentid);
                     statusShowPaypal.setText("Failure");
-                    amountShowPaypal.setText(Amount);
+
                 }
             }
+
         });
     }
 

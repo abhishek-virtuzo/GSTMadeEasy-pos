@@ -42,6 +42,7 @@ public class RechargePaymentActivity extends AppCompatActivity {
     double amountToBePaid;
     String zipcode;
     String mobileno;
+    String email;
     OperatorClass operator;
     PlanClass plan;
     String loginID;
@@ -129,6 +130,7 @@ public class RechargePaymentActivity extends AppCompatActivity {
                     intent.putExtra("zipcode", zipcode);
                     intent.putExtra("distributorId", distributorID);
                     intent.putExtra("paymentType", "wallet");
+                    intent.putExtra("email", email);
                     startActivity(intent);
 
 
@@ -170,6 +172,7 @@ public class RechargePaymentActivity extends AppCompatActivity {
 
         zipcode = getIntent().getStringExtra("zipcode");
         mobileno = getIntent().getStringExtra("mobileno");
+        email = getIntent().getStringExtra("email");
 
         amountToBePaid = plan.getTotalAmount();
 
@@ -219,6 +222,7 @@ public class RechargePaymentActivity extends AppCompatActivity {
                         intent.putExtra("zipcode", zipcode);
                         intent.putExtra("distributorId", distributorID);
                         intent.putExtra("paymentType", "paypal");
+                        intent.putExtra("email", email);
                         startActivity(intent);
                     } catch (Exception c) {
                         showAlert("Something went wrong. PLease try again later");

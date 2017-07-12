@@ -1,47 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.RechargeActivity">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.ActiveSIM">
+        android:layout_weight="1"
+        android:paddingBottom="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="15dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/operator_layout"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:textColor="#000000">
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/operatorEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@color/white"
-                        android:enabled="false"
-                        android:focusable="false"
-                        android:hint="Operator"
-                        android:paddingLeft="15dp"
-                        android:singleLine="true"
-                        android:textColor="#000000" />
+                    <TextView
+                        android:id="@+id/operatorTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Operator"
+                        android:visibility="invisible" />
 
-                </android.support.design.widget.TextInputLayout>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/operatorEditText1"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:enabled="false"
+                            android:focusable="false"
+                            android:hint="Operator"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="or Change"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/themeColor"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Current Operator"
+                                android:textColor="@color/themeColor"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
 
                 <View
                     android:id="@+id/operatorSelectView"
@@ -51,85 +96,166 @@
 
             </RelativeLayout>
 
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:background="#ffffff"
-                android:paddingLeft="10dp"
-                android:textColor="#000000">
-
-
-                <EditText
-                    android:id="@+id/simcardno"
-                android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@null"
-                    android:hint="Enter Sim card number"
-                    android:inputType="number"
-                    android:paddingLeft="5dp"
-                    android:singleLine="true"
-                    android:textColor="#000000" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/zip"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="15dp"
-                android:background="#ffffff"
-                android:paddingLeft="10dp"
-                android:textColor="#000000">
-
-                <EditText
-                    android:id="@+id/zipcodeEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@null"
-                    android:hint="Zip Code"
-                    android:inputType="number"
-                    android:paddingLeft="5dp"
-                    android:singleLine="true"
-                    android:textColor="#000000" />
-
-            </android.support.design.widget.TextInputLayout>
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="15dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
 
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/plan_layout"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:textColor="#000000">
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/simCardNoTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sim Card no"
+                        android:visibility="invisible" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/simcardno"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Enter Sim card number"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/sim" />
+
+                    </RelativeLayout>
 
 
-                    <EditText
-                        android:id="@+id/planEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/white"
-                        android:focusable="false"
-                        android:hint="Plan"
-                        android:paddingLeft="15dp"
-                        android:singleLine="true"
-                        android:textColor="#000000" />
+                </LinearLayout>
+            </RelativeLayout>
 
-                </android.support.design.widget.TextInputLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/zipcodeTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Zip Code"
+                        android:visibility="invisible" />
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/zipcodeEditText1"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Zip Code"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/zipcode" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/planTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Plan"
+                        android:visibility="invisible" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/planEditText1"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:focusable="false"
+                            android:hint="Plan"
+                            android:paddingTop="5dp"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:id="@+id/planMessageLinearLayout1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="BrowsePlans"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/themeColor"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="of all operators"
+                                android:textColor="@color/themeColor"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
 
                 <View
                     android:id="@+id/planSelectView"
@@ -138,37 +264,53 @@
                     android:backgroundTint="#000000" />
 
             </RelativeLayout>
+
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="15dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
 
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/amount_layout"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:textColor="#000000">
+                    android:orientation="vertical">
 
 
-                    <EditText
-                        android:id="@+id/amountEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/white"
-                        android:focusable="false"
-                        android:hint="Amount"
-                        android:paddingLeft="15dp"
-                        android:singleLine="true"
-                        android:textColor="#000000" />
+                    <TextView
+                        android:id="@+id/amountTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Amount"
+                        android:visibility="invisible" />
 
-                </android.support.design.widget.TextInputLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/amountEditText1"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:focusable="false"
+                            android:hint="Amount"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/amount" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
 
                 <View
                     android:id="@+id/amountSelectView"
@@ -178,83 +320,128 @@
 
             </RelativeLayout>
 
-            <android.support.design.widget.TextInputLayout
-
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:background="#ffffff"
-                android:paddingLeft="10dp"
-                android:textColor="#000000">
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp">
 
-
-                <EditText
-                    android:id="@+id/emailid"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@null"
-                    android:hint="Email"
-                    android:paddingLeft="5dp"
-                    android:singleLine="true"
-                    android:textColor="#000000" />
-
-
-            </android.support.design.widget.TextInputLayout>
-
-            <RelativeLayout
-                android:id="@+id/relativehide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="invisible">
-
-                <android.support.design.widget.TextInputLayout
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:background="#ffffff"
-                    android:paddingLeft="10dp"
-                    android:textColor="#000000">
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/city"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/white"
-                        android:hint="city"
-                        android:paddingLeft="20dp"
-                        android:singleLine="true"
-                        android:textColor="#000000" />
 
-                </android.support.design.widget.TextInputLayout>
+                    <TextView
+                        android:id="@+id/emailTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email Id"
+                        android:visibility="invisible" />
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/emailid1"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Email Id"
+                            android:inputType="textEmailAddress"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/customer" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
 
 
             </RelativeLayout>
 
-            <Button
-                android:id="@+id/proceed"
+
+            <RelativeLayout
+                android:id="@+id/cityRelativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone">
 
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="10dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/cityTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="City" />
 
 
-                android:background="@drawable/edittext_shapeee"
-                android:padding="5dp"
-                android:text="Active Using  Account Balance"
-                android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/cityEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="City"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/zipcode" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
 
         </LinearLayout>
 
-    </RelativeLayout>
 
-</ScrollView>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/edittext_shapeee"
+        android:padding="5dp"
+        android:text="Go To Payment"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+
+</LinearLayout>

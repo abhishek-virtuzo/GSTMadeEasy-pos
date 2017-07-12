@@ -33,7 +33,7 @@ public class SelectActionPlanAdapter extends RecyclerView.Adapter<SelectActionPl
         View itemView = null;
 
         itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.language, parent, false);
+                .inflate(R.layout.plan_activation_recycle_view_row, parent, false);
         return new MyViewHolder(itemView);
     }
 
@@ -42,9 +42,17 @@ public class SelectActionPlanAdapter extends RecyclerView.Adapter<SelectActionPl
 
         ActivationPlanClass plan = PlanList.get(position);
 
-        holder.bind(PlanList.get(position));
-        holder.planTextView.setText(plan.getTariffPlan());
+        String rechargeAmountString = "Recharge Amount - $ " + plan.getAmount();
+        String regulatoryString = "Regulatory(" + plan.getRegulatory() + "%) - $ " + (plan.getAmount() * plan.getRegulatory() / 100);
+        String discountString = "Validity - " + plan.getValidityDays() + " days";
+        String totalAmountString = "$ " + plan.getAmount();
 
+        holder.bind(PlanList.get(position));
+        holder.productDescriptionTextView.setText(plan.getTariffPlan());
+        holder.rechargeAmountTextView.setText(rechargeAmountString);
+        holder.regulatoryTextView.setText(regulatoryString);
+        holder.validityTextView.setText(discountString);
+        holder.totalAmountTextView.setText(totalAmountString);
     }
 
     @Override
@@ -59,17 +67,27 @@ public class SelectActionPlanAdapter extends RecyclerView.Adapter<SelectActionPl
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView planTextView;
 
         public View myView;
 
+        public TextView productDescriptionTextView;
+        public TextView rechargeAmountTextView;
+        public TextView regulatoryTextView;
+        public TextView validityTextView;
+        public TextView totalAmountTextView;
+
 
         public MyViewHolder(View itemView) {
+
             super(itemView);
-            planTextView = (TextView) itemView.findViewById(R.id.language);
+
+            productDescriptionTextView = (TextView) itemView.findViewById(R.id.productDescriptionTextView1);
+            rechargeAmountTextView = (TextView) itemView.findViewById(R.id.rechargeAmountTextView1);
+            regulatoryTextView = (TextView) itemView.findViewById(R.id.regulatoryTextView1);
+            validityTextView = (TextView) itemView.findViewById(R.id.validityTextView);
+            totalAmountTextView = (TextView) itemView.findViewById(R.id.totalAmountTextView1);
 
             myView = itemView;
-
 
         }
 

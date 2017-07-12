@@ -6,6 +6,7 @@
     android:orientation="vertical"
     tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.RechargeActivity">
 
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -18,241 +19,406 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:paddingTop="10dp">
 
-            <android.support.v7.widget.CardView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
+                android:layout_height="wrap_content">
 
-                <android.support.design.widget.TextInputLayout
-
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#ffffff"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:textColor="#000000">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/mobileNoEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
-                        android:hint="Mobile No"
-                        android:inputType="number"
-                        android:singleLine="true"
-                        android:textColor="#000000" />
+                    <TextView
+                        android:id="@+id/mobileNoTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile no"
+                        android:visibility="invisible" />
 
-                </android.support.design.widget.TextInputLayout>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-            </android.support.v7.widget.CardView>
+                        <EditText
+                            android:id="@+id/mobileNoEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Mobile No"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
 
-            <android.support.v7.widget.CardView
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/phoneno" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="15dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/password_layout"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#ffffff"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:textColor="#000000">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/confirmMobileNoEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
-                        android:hint="Confirm Mobile No"
-                        android:inputType="number"
-                        android:singleLine="true"
-                        android:textColor="#000000" />
 
-                </android.support.design.widget.TextInputLayout>
+                    <TextView
+                        android:id="@+id/confirmMobileNoTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Confirm Mobile no"
+                        android:visibility="invisible" />
 
-            </android.support.v7.widget.CardView>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginTop="15dp">
+                        <EditText
+                            android:id="@+id/confirmMobileNoEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Confirm Mobile No"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/phoneno" />
+                    </RelativeLayout>
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/operator_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:background="#ffffff"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="5dp"
-                        android:textColor="#000000">
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/operatorTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Operator"
+                        android:visibility="invisible" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
                         <EditText
                             android:id="@+id/operatorEditText"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:background="@color/white"
-                            android:enabled="false"
+                            android:layout_height="50dp"
                             android:focusable="false"
                             android:hint="Operator"
                             android:singleLine="true"
-                            android:textColor="#000000" />
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <View
-                        android:id="@+id/operatorSelectView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                    <!--<LinearLayout-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="vertical"-->
-                    <!--android:layout_centerVertical="true"-->
-                    <!--android:layout_alignParentEnd="true"-->
-                    <!--android:layout_alignParentRight="true"-->
-                    <!--android:paddingRight="5dp">-->
-
-                    <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:textSize="12dp"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:text="or Change"-->
-                    <!--android:textColor="@color/themeColor"/>-->
-
-                    <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:textSize="12dp"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:text="Current Opertaor"-->
-                    <!--android:textColor="@color/themeColor"/>-->
-
-                    <!--</LinearLayout>-->
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
 
 
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="15dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="or Change"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/themeColor"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/zip"
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Current Operator"
+                                android:textColor="@color/themeColor"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/operatorSelectView"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:background="#ffffff"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:textColor="#000000">
-
-                    <EditText
-                        android:id="@+id/zipcodeEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
-                        android:hint="Zip Code"
-                        android:inputType="number"
-                        android:singleLine="true"
-                        android:textColor="#000000" />
-
-                </android.support.design.widget.TextInputLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginTop="15dp">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent" />
 
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/plan_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:background="#ffffff"
-                        android:paddingLeft="10dp"
-                        android:textColor="#000000">
+            </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/zipcodeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Zip Code"
+                        android:visibility="invisible" />
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/zipcodeEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Zip Code"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/zipcode" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/planTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Plan"
+                        android:visibility="invisible" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
                         <EditText
                             android:id="@+id/planEditText"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:background="@color/white"
+                            android:layout_height="50dp"
                             android:focusable="false"
                             android:hint="Plan"
                             android:paddingTop="5dp"
                             android:singleLine="true"
-                            android:textColor="#000000" />
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
 
-                    </android.support.design.widget.TextInputLayout>
+                        <LinearLayout
+                            android:id="@+id/planMessageLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical">
 
-                    <View
-                        android:id="@+id/planSelectView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:backgroundTint="#000000" />
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="15dp">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="BrowsePlans"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/themeColor"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
 
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/amount_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:background="#ffffff"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="5dp"
-                        android:textColor="#000000">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="of all operators"
+                                android:textColor="@color/themeColor"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
 
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/planSelectView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#000000" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/amountTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Amount"
+                        android:visibility="invisible" />
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
                         <EditText
                             android:id="@+id/amountEditText"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:background="@color/white"
+                            android:layout_height="50dp"
                             android:focusable="false"
                             android:hint="Amount"
                             android:singleLine="true"
-                            android:textColor="#000000" />
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
 
-                    </android.support.design.widget.TextInputLayout>
 
-                    <View
-                        android:id="@+id/amountSelectView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:backgroundTint="#000000" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/amount" />
+                    </RelativeLayout>
 
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/amountSelectView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#000000" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/emailTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email Id"
+                        android:visibility="invisible" />
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/emailEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Email Id"
+                            android:inputType="textEmailAddress"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/customer" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -266,8 +432,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:background="@drawable/edittext_shapeee"
-        android:padding="5dp"
         android:text="Proceed"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"

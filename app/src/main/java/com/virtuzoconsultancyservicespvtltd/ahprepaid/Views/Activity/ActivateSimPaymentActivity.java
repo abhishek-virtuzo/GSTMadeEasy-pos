@@ -60,6 +60,8 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
     String month;
     String tariffid;
     String city;
+    String vendorid;
+
 
     OperatorClass selectedOperator;
     @Override
@@ -74,7 +76,7 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
 //            city=getIntent().getStringExtra("city");
 //        }
 
-
+        vendorid = getIntent().getStringExtra("vendorid");
         month = getIntent().getStringExtra("month");
         operators = getIntent().getStringExtra("operator");
         simCard = getIntent().getStringExtra("simCard");
@@ -86,7 +88,7 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
         distrbutorid = getIntent().getStringExtra("DistributorID");
         loginid = getIntent().getStringExtra("LoginID");
         tariffid = getIntent().getStringExtra("tariffid");
-
+        city = getIntent().getStringExtra("city");
 
         walletProgressDialog = new ProgressDialog(this);
         walletProgressDialog.setCancelable(false);
@@ -199,7 +201,8 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
                 String paymenttype = "wallet";
                 Intent intent = new Intent(getApplicationContext(), ActivationConfirmActivity.class);
                 intent.putExtra("plan", plans);
-
+                intent.putExtra("city", city);
+                intent.putExtra("vendorid", vendorid);
                 intent.putExtra("Amount", Amount);
                 intent.putExtra("email", email);
                 intent.putExtra("operator", operators);
@@ -276,6 +279,8 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
 
                         intent.putExtra("paymentId", initiatePayPalRechargeForActivation.paymentID);
                         intent.putExtra("plan", plans);
+                        intent.putExtra("city", city);
+                        intent.putExtra("vendorid", vendorid);
                         intent.putExtra("Amount", Amount);
                         intent.putExtra("email", email);
                         intent.putExtra("operator", operators);

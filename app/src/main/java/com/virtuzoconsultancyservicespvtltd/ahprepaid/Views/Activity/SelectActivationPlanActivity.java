@@ -29,6 +29,9 @@ public class SelectActivationPlanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Select Plan");
+
         setContentView(R.layout.activity_select_activation_plan);
         listOfPlans = new ArrayList<>();
 

@@ -93,7 +93,7 @@ public class ConfirmRecharge {
                     "&TariffCode=" + plan.getTariffCode() +
                     "&MobileNo=" + mobileno +
                     "&TotalAmount=" + plan.getTotalAmount() +
-                    "&EmailID=" + email +
+                    "&EmailID=abhishek.s@virtuzo.in" +
                     "&RechargeAmount=" + plan.getRechargeAmount() +
                     "&State=" +
                     "&ZIPCode=" + zipcode +

@@ -74,6 +74,7 @@ public class ConfirmRechargeActivity extends AppCompatActivity {
         operator = gson.fromJson(operatorString, OperatorClass.class);
         plan = gson.fromJson(planString, PlanClass.class);
 
+        email = getIntent().getStringExtra("email");
         zipcode = getIntent().getStringExtra("zipcode");
         mobileno = getIntent().getStringExtra("mobileno");
         paymentId = getIntent().getStringExtra("paymentId");
@@ -81,7 +82,7 @@ public class ConfirmRechargeActivity extends AppCompatActivity {
 
         loginId = getSharedPreferences("LoginPrefs", 0).getString("LoginID", "null");
         distributorId = getSharedPreferences("LoginPrefs", 0).getString("DistributorID", "null");
-        email = getSharedPreferences("LoginPrefs", 0).getString("EmailID", "null");
+
 
         if (paymentType.compareTo("paypal") == 0) {
             paypalPaymentId = getIntent().getStringExtra("paypalPaymentId");
