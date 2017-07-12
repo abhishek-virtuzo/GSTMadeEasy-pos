@@ -49,6 +49,7 @@
                             android:layout_height="50dp"
                             android:hint="Mobile No"
                             android:inputType="number"
+                            android:maxLength="10"
                             android:singleLine="true"
                             android:textColor="#000000"
                             android:textSize="20sp" />
@@ -95,6 +96,7 @@
                             android:layout_height="50dp"
                             android:hint="Confirm Mobile No"
                             android:inputType="number"
+                            android:maxLength="10"
                             android:singleLine="true"
                             android:textColor="#000000"
                             android:textSize="20sp" />
@@ -218,6 +220,7 @@
                             android:layout_height="50dp"
                             android:hint="Zip Code"
                             android:inputType="number"
+                            android:maxLength="6"
                             android:singleLine="true"
                             android:textColor="#000000"
                             android:textSize="20sp" />

@@ -313,7 +313,7 @@ public class RechargeActivity extends AppCompatActivity {
                     showAlert("Mobile Numbers do not match");
                 } else if (!isOperatorSelected) {
                     showAlert("Please select an operator");
-                } else if (zipcode.length() != 5) {
+                } else if (zipcode.length() != 6) {
                     showAlert("Please enter a valid zipcode");
                 } else if (!isPlanSelected) {
                     showAlert("Please select a plan");

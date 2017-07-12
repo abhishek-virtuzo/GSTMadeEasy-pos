@@ -115,6 +115,7 @@ public class ActiveSIM extends AppCompatActivity {
         amountEditText = (EditText) findViewById(R.id.amountEditText1);
         cityEditText = (EditText) findViewById(R.id.cityEditText);
         simCardNO = (EditText) findViewById(R.id.simcardno);
+//        simCardNO.addTextChangedListener(new NumberTextWatcher(simCardNO));
         Emailid = (EditText) findViewById(R.id.emailid1);
 
         simNoTextView = (TextView) findViewById(R.id.simCardNoTextView);
@@ -344,7 +345,7 @@ public class ActiveSIM extends AppCompatActivity {
                     showAlert("Enter a valid 20 digit simcard no");
                 } else if (!isPlanSelected) {
                     showAlert("Please select a plan");
-                } else if (zipcode.length() != 5) {
+                } else if (zipcode.length() != 6) {
                     showAlert("Please enter a valid zipcode");
 
                 } else if (selectedOperator.getVendorID() != 13 && city.isEmpty()) {

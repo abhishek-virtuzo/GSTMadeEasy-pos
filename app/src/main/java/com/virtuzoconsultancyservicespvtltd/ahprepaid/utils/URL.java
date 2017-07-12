@@ -9,7 +9,7 @@ public interface URL {
 
     String TestURL = "http://virtuzo.in/AHPrepaidMultipleNetworkService/AhprepaidAPI_Json.svc";
 
-    String Server = TestURL;
+    String Server = MainURL;
 
     String TariffServiceURL="http://virtuzo.in/AhprepaidTestService/AhprepaidAPI_Json.svc/GetTariffService";
 
