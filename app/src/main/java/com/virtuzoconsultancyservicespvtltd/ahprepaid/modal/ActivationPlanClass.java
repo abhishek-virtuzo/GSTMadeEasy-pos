@@ -6,7 +6,7 @@ package com.virtuzoconsultancyservicespvtltd.ahprepaid.modal;
 
 public class ActivationPlanClass {
 
-    int TrariffID;
+    int TariffID;
     int TariffCode;
     String TariffPlan;
     double Amount;
@@ -15,12 +15,12 @@ public class ActivationPlanClass {
     double Regulatory;
     int Months;
 
-    public int getTrariffID() {
-        return TrariffID;
+    public int getTariffID() {
+        return TariffID;
     }
 
-    public void setTrariffID(int trariffID) {
-        TrariffID = trariffID;
+    public void setTrariffID(int tariffID) {
+        TariffID = tariffID;
     }
 
     public int getTariffCode() {

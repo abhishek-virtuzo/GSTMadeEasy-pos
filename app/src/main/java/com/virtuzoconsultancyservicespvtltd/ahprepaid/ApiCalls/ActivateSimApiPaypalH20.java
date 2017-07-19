@@ -81,7 +81,7 @@ public class ActivateSimApiPaypalH20 {
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            url = URL.Server + "/ActivateSIMForLycaMobileWithPaypal?" +
+            url = URL.Server + "/ActivateSIMForH2OWithPaypal?" +
                     "ClientTypeID=" + clientid +
                     "&DistributorID=" + distributorid +
                     "&TariffID=" + tariffid +

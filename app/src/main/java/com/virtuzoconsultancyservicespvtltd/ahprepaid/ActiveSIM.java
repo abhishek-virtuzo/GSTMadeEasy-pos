@@ -83,7 +83,7 @@ public class ActiveSIM extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_sim);
 
-        btnaActiveUsingAccountBalance = (Button) findViewById(R.id.btnaActiveUsingAccountBalance);
+        //     btnaActiveUsingAccountBalance = (Button) findViewById(R.id.btnaActiveUsingAccountBalance);
 
         email = getIntent().getStringExtra("strEmailId");
         clienttypeid = getIntent().getStringExtra("ClientTypeID");
@@ -321,19 +321,25 @@ public class ActiveSIM extends AppCompatActivity {
             }
         });
 
+
         ActivateSim.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
             public void onClick(View view) {
+                String plan = null;
+                String tarriffid = null;
+                String month = null;
                 String zipcode = String.valueOf(zipcodeEditText.getText().toString());
                 String simcard = simCardNO.getText().toString();
-                String plan = selectedPlan.getTariffPlan();
-                String tarriffid = String.valueOf(selectedPlan.getTariffTypeID());
-                String month = selectedPlan.getMonths();
+                if (selectedPlan != null) {
+                    plan = selectedPlan.getTariffPlan();
+                    tarriffid = String.valueOf(selectedPlan.getTariffID());
+                    month = selectedPlan.getMonths();
+                }
 
 
-                if (selectedOperator.getVendorID() != 13) {
+                if (selectedOperator != null && selectedOperator.getVendorID() != 13) {
                     city = cityEditText.getText().toString();
                 }
 
@@ -345,9 +351,8 @@ public class ActiveSIM extends AppCompatActivity {
                     showAlert("Enter a valid 20 digit simcard no");
                 } else if (!isPlanSelected) {
                     showAlert("Please select a plan");
-                } else if (zipcode.length() != 6) {
-                    showAlert("Please enter a valid zipcode");
-
+                } else if (zipcode.length() != 5) {
+                    showAlert("Please enter a valid 5-digit zipcode");
                 } else if (selectedOperator.getVendorID() != 13 && city.isEmpty()) {
                     if (cityEditText.getText().toString().isEmpty()) {
                         showAlert("Please enter city Name");

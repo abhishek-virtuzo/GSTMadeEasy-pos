@@ -43,7 +43,8 @@ public class SelectPlanAdapter extends RecyclerView.Adapter<SelectPlanAdapter.My
         PlanClass plan = PlanList.get(position);
 
         String rechargeAmountString = "Recharge Amount - " + plan.getCurrencySymbol() + " " + plan.getRechargeAmount();
-        String regulatoryString = "Regulatory(" + plan.getRegulatory() + "%) - " + plan.getCurrencySymbol() + " " + (plan.getRechargeAmount() * plan.getRegulatory() / 100);
+        //  String regulatoryString = "Regulatory(" + plan.getRegulatory() + "%) - " + plan.getCurrencySymbol() + " " + (plan.getRechargeAmount() * plan.getRegulatory() / 100);
+        String regulatoryString = "Regulatory-" + plan.getRegulatry();
         String discountString = "Discount(" + plan.getDiscount() + "%) - " + plan.getCurrencySymbol() + " " + (plan.getRechargeAmount() * plan.getDiscount() / 100);
         String totalAmountString = plan.getCurrencySymbol() + " " + plan.getTotalAmount();
 

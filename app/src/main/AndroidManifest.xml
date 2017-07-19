@@ -88,8 +88,8 @@
         <activity android:name=".Views.Activity.ActivateSimPaymentActivity" />
         <activity android:name=".Views.Activity.SelectActivationPlanActivity" />
         <activity android:name=".Views.Activity.ActivationConfirmActivity" />
-
-
+        <activity android:name=".Views.Activity.PortSimPaymentActivity" />
+        <activity android:name=".Views.Activity.PortConfirmActivity"></activity>
     </application>
 
 </manifest>

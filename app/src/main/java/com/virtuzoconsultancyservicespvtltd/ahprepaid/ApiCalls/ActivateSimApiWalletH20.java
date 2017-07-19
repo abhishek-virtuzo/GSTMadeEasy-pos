@@ -77,7 +77,7 @@ public class ActivateSimApiWalletH20 {
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            url = URL.Server + "/ActivateSIMForLycaMobile?" +
+            url = URL.Server + "/ActivateSIMForH2O?" +
                     "ClientTypeID=" + clientid +
                     "&DistributorID=" + distributorid +
                     "&TariffID=" + tariffid +

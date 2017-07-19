@@ -11,7 +11,7 @@ public class PlanClass {
     double RechargeAmount;
     String CurrencySymbol;
     double StateTax;
-    double Regulatory;
+    double Regulatry;
     double Discount;
     String PlanDescription;
     double TotalAmount;
@@ -65,12 +65,12 @@ public class PlanClass {
         StateTax = stateTax;
     }
 
-    public double getRegulatory() {
-        return Regulatory;
+    public double getRegulatry() {
+        return Regulatry;
     }
 
-    public void setRegulatory(double regulatory) {
-        Regulatory = regulatory;
+    public void setRegulatry(double Regulatry) {
+        Regulatry = Regulatry;
     }
 
     public double getDiscount() {

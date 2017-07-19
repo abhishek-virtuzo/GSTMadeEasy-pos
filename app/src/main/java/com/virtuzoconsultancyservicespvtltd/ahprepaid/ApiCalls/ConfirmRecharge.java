@@ -99,7 +99,7 @@ public class ConfirmRecharge {
                     "&ZIPCode=" + zipcode +
                     "&TxnID=" + paypalPaymentId +
                     "&Tax=0" +
-                    "&Regulatery=" + plan.getRegulatory() +
+                    "&Regulatery=" + plan.getRegulatry() +
                     "&DistributorID=" + distributorId +
                     "&LoginID=" + loginId +
                     "&RechargeVia=" + rechargeVia +

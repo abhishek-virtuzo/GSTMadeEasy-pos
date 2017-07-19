@@ -10,7 +10,7 @@ public class PayPalConfig {
     public static final String ENVIRONMENT = PayPalConfiguration.ENVIRONMENT_PRODUCTION;
 
     //Sandbox 1
-//    public static final String PAYPAL_CLIENT_ID = "AYrQvo2dBe7JwOPKaegZs-_20dddCLBA4X4xh-pklicVYDnCCyYyqbs1f-2OWXvxd4PmdhZCwL6HJnv_";
+    //  public static final String PAYPAL_CLIENT_ID = "AYrQvo2dBe7JwOPKaegZs-_20dddCLBA4X4xh-pklicVYDnCCyYyqbs1f-2OWXvxd4PmdhZCwL6HJnv_";
 
     //Live 1
     //public static final String PAYPAL_CLIENT_ID="AQQdbSpel5-xEF10gsJIJ6YpVZHZKeBGgBiWnbpg_5YeBJ19yTUROuEHl_WvmJ8RICssiubVZc-6Eeoj";

@@ -85,7 +85,7 @@ public class ConfirmRechargeActivity extends AppCompatActivity {
 
 
         if (paymentType.compareTo("paypal") == 0) {
-            paypalPaymentId = getIntent().getStringExtra("paypalPaymentId");
+            paypalPaymentId = getIntent().getStringExtra("PaypalPaymentId");
         }
 
     }
@@ -118,7 +118,7 @@ public class ConfirmRechargeActivity extends AppCompatActivity {
 
                     paymentStatusTextView.setText("Success");
                     messageImageView.setImageResource(R.drawable.smile);
-                    messageTextView.setText("Conragatulations, Your recharge was successful");
+                    messageTextView.setText("Conratulations, Your recharge was successful");
 
                 } else {
 

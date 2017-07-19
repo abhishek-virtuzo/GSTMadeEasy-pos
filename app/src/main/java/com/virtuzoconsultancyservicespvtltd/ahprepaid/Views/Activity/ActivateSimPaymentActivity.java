@@ -199,7 +199,7 @@ public class ActivateSimPaymentActivity extends AppCompatActivity {
                 // walletProgressDialog.show();
 
                 String paymenttype = "wallet";
-                Intent intent = new Intent(getApplicationContext(), ActivationConfirmActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PortConfirmActivity.class);
                 intent.putExtra("plan", plans);
                 intent.putExtra("city", city);
                 intent.putExtra("vendorid", vendorid);

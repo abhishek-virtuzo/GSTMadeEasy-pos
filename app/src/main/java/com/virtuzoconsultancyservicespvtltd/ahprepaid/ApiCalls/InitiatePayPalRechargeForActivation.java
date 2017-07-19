@@ -3,7 +3,7 @@ package com.virtuzoconsultancyservicespvtltd.ahprepaid.ApiCalls;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.ActivateSimPaymentActivity;
+import com.virtuzoconsultancyservicespvtltd.ahprepaid.Views.Activity.PortSimPaymentActivity;
 import com.virtuzoconsultancyservicespvtltd.ahprepaid.utils.URL;
 
 import org.apache.http.HttpEntity;
@@ -106,7 +106,7 @@ public class InitiatePayPalRechargeForActivation {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
 
-            ActivateSimPaymentActivity.paypalProgressDialog.dismiss();
+            PortSimPaymentActivity.paypalProgressDialog.dismiss();
 
         }
 
