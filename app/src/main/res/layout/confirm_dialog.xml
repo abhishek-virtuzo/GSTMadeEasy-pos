@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="Do you want to confirm ?"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:id="@+id/confirmMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="No"
+            android:id="@+id/noClick"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:background="@color/common_signin_btn_default_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:text="Yes"
+            android:id="@+id/yesClick"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:background="#2ecc71"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

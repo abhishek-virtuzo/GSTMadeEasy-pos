@@ -1,22 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/activate_sim"
-            android:icon="@drawable/sim"
-            android:title="Activate SIM" />
+            android:id="@+id/product_list"
+            android:icon="@drawable/product_list"
+            android:title="Product List" />
         <item
-            android:id="@+id/portin"
-            android:icon="@drawable/sim"
-            android:title="PortIn" />
+            android:id="@+id/customer_list"
+            android:icon="@drawable/customer_list"
+            android:title="Customer List" />
         <item
-            android:id="@+id/sim_replacement"
-            android:icon="@drawable/sim"
-            android:title="SIM Replacement" />
-
+            android:id="@+id/supplier_list"
+            android:icon="@drawable/supplier_list"
+            android:title="Supplier List" />
+        <item
+            android:id="@+id/invoice_list"
+            android:icon="@drawable/invoice_list"
+            android:title="Invoice List" />
+        <item
+            android:id="@+id/delivery_order_list"
+            android:icon="@drawable/delivery_order"
+            android:title="Delivery Order List" />
+        <item
+            android:id="@+id/salesreturn_list"
+            android:icon="@drawable/salesreturns"
+            android:title="Sales Return List" />
+        <!--<item-->
+            <!--android:id="@+id/creditnote_list"-->
+            <!--android:icon="@drawable/credit_note_menu"-->
+            <!--android:title="Credit Note List" />-->
+        <item
+            android:id="@+id/purchase_list"
+            android:icon="@drawable/purchase"
+            android:title="Purchase List" />
+        <item
+            android:id="@+id/purchasereturn_list"
+            android:icon="@drawable/salesreturns"
+            android:title="Purchase Return List" />
+        <!--<item-->
+            <!--android:id="@+id/debitnote_list"-->
+            <!--android:icon="@drawable/credit_note_menu"-->
+            <!--android:title="Debit Note List" />-->
+        <item
+            android:id="@+id/hsn_code_list"
+            android:icon="@drawable/hsn"
+            android:title="HSN Code List" />
+        <item
+            android:id="@+id/web_portal"
+            android:icon="@drawable/web_portal"
+            android:title="Web Portal" />
+        <item
+            android:id="@+id/admin_login"
+            android:icon="@drawable/gear"
+            android:title="Setup" />
+        <item
+            android:id="@+id/update_app"
+            android:icon="@drawable/update_app"
+            android:title="Update APK"
+            android:visible="false"/>
+        <item
+            android:id="@+id/logout_btn"
+            android:icon="@drawable/logout_btn"
+            android:title="Logout" />
     </group>
-
-
-
 </menu>

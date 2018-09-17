@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AHprepaid.iml" filepath="$PROJECT_DIR$/AHprepaid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GSTMadeEasy.iml" filepath="$PROJECT_DIR$/GSTMadeEasy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

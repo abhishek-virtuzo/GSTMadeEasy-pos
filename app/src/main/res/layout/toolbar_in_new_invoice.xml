@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center"
+        android:onClick="backButtonPressed">
+
+        <ImageButton
+            android:onClick="backButtonPressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/go_back_left_arrow" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/actionBarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="32dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/invoiceNumberTextViewInNewInvoice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:gravity="center|right"
+            android:layout_toLeftOf="@+id/saveAsDraft"
+            android:text="inv"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:src="@drawable/draft_white"
+            android:id="@+id/saveAsDraft"
+            android:onClick="saveAsDraftClick"
+            android:padding="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

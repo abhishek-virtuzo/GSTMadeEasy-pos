@@ -2,14 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '26.0.2'
     defaultConfig {
-        applicationId "com.virtuzoconsultancyservicespvtltd.ahprepaid"
+        applicationId "com.virtuzoconsultancyservicespvtltd.gstmadeeasy"
         minSdkVersion 14
-        targetSdkVersion 22
-        versionCode 5
-        versionName "2.0"
-
+        targetSdkVersion 23
+        versionCode 6
+        versionName "1.0.13"
     }
     buildTypes {
         release {
@@ -17,12 +16,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/hoinsdk.jar')
+    // for StringEscapeUtils
     compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
     compile 'com.getbase:floatingactionbutton:1.10.1'
     compile 'com.android.support:cardview-v7:23.4.0'
@@ -30,7 +31,10 @@ dependencies {
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.code.gson:gson:2.8.1'
+    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
+    compile 'org.apache.commons:commons-lang3:3.5'
     testCompile 'junit:junit:4.12'
+    implementation files('libs/jsoup-1.11.3.jar')
 }
 
 android {
@@ -38,13 +42,4 @@ android {
 }
 
 
-
-
-
-
-
-
-
-
-
-
+apply plugin: 'realm-android'

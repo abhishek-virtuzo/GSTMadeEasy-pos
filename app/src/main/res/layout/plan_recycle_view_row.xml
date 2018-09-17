@@ -52,11 +52,19 @@
                     android:id="@+id/discountTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:text="Discount(@5%) - $1" />
 
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/afterTotalAmountTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Discount(@5%) - $1" />
 
             </LinearLayout>
 
@@ -65,7 +73,8 @@
                 android:layout_height="match_parent">
 
                 <FrameLayout
-                    android:layout_width="80dp"
+                    android:id="@+id/amountFrameLayout"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="10dp"
@@ -86,6 +95,7 @@
                         android:textAlignment="center"
                         android:textColor="@color/themeColor"
                         android:textSize="17dp" />
+
                 </FrameLayout>
 
             </RelativeLayout>

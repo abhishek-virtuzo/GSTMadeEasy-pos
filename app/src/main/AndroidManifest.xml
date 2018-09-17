@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.virtuzoconsultancyservicespvtltd.ahprepaid">
+    package="com.virtuzo.abhishek">
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -18,53 +18,46 @@
         android:required="false" />
 
     <!-- for card.io card scanning -->
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <!-- for most things, including card.io & paypal -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
-        android:debuggable="true"
-        android:icon="@drawable/ah_prepaid"
+        android:icon="@drawable/distributonlogo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/dashboard"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SplashScreen">
+            android:name=".SplashScreen"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login"
-            android:label="AH Prepaid"
+            android:name=".UserLoginApi$Login"
+            android:label="GSTMadeEasy"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".ActiveSIM"
-            android:label="New Activation"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".Portln"
-            android:label="New Portln"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".SimReplacement"
-            android:label="New SIM Replacement"
-            android:windowSoftInputMode="stateHidden" />
-
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -73,23 +66,183 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".ConfirmationActivity" />
-        <activity android:name=".DashBoardScreen" />
         <activity
-            android:name=".NewTopup"
-            android:label="@string/title_activity_new_topup"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".Views.Activity.RechargeActivity" />
-        <activity android:name=".Views.Activity.SelectOperatorActivity" />
-        <activity android:name=".Views.Activity.SelectPlanActivity" />
-        <activity android:name=".Views.Activity.TopUpActivity" />
-        <activity android:name=".Views.Activity.RechargePaymentActivity" />
-        <activity android:name=".Views.Activity.ConfirmRechargeActivity" />
-        <activity android:name=".Views.Activity.ActivateSimPaymentActivity" />
-        <activity android:name=".Views.Activity.SelectActivationPlanActivity" />
-        <activity android:name=".Views.Activity.ActivationConfirmActivity" />
-        <activity android:name=".Views.Activity.PortSimPaymentActivity" />
-        <activity android:name=".Views.Activity.PortConfirmActivity"></activity>
+            android:name=".DashBoardScreen"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Views.Activity.ListActivity.ProductListActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.CustomerListActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.SupplierListActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewInvoiceActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.InvoiceListActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.InvoiceListForPaymentActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.InvoiceListForSalesReturnActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".Views.Activity.Others.ComingSoonActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewPurchaseActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.InvoicePaymentActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.MultipleInvoicePaymentActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewProductActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewCustomerActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewSupplierActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Views.Activity.ViewActivity.ShowInvoiceDetailsActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ViewActivity.PurchaseViewActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Views.Activity.Others.WebPortalActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewSalesReturnActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.Others.WifiActivity"
+            android:screenOrientation="landscape" />
+
+        <receiver android:name=".WifiLibrary.WiFiManager$NetworkBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.wifi.SCAN_RESULTS" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+                <action android:name="android.net.wifi.supplicant.STATE_CHANGE" />
+                <action android:name="android.net.wifi.supplicant.CONNECTION_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".Views.Activity.ViewActivity.ProductViewActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Views.Activity.ViewActivity.CustomerViewActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Views.Activity.ViewActivity.SupplierViewActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Views.Activity.ListActivity.PurchaseListActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Views.Activity.ListActivity.HsnCodeListActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.ErrorLogsListActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewDeliveryOrderActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.DeliveryOrderListActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Views.Activity.ViewActivity.DeliveryOrderViewActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewSalesInvoiceFromDOActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.SalesReturnListActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ViewActivity.SalesReturnViewActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.PurchaseReturnListActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ViewActivity.PurchaseReturnViewActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewCreditNoteActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewDebitNoteActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.CreditNoteListActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ViewActivity.CreditNoteViewActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".Views.Activity.ListActivity.PurchaseListForPurchaseReturnActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".Views.Activity.NewFormActivity.NewPurchaseReturnActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity android:name=".Views.Activity.Others.SettingsActivity" />
+        <activity android:name=".Views.Activity.ListActivity.DraftInvoiceListActivity"></activity>
     </application>
 
 </manifest>

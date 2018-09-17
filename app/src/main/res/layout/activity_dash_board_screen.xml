@@ -1,251 +1,518 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <include
-        android:id="@+id/toolbar_dashboard"
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></include>
-
-
-    <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-
+    android:id="@+id/drawer_layout"
+    tools:context=".DashBoardScreen"
+    android:theme="@style/AppTheme.NoActionBar">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="2.5dp"
-        tools:context="com.virtuzoconsultancyservicespvtltd.ahprepaid.DashBoardScreen">
+        android:orientation="vertical">
 
-
-        <FrameLayout
-            android:id="@+id/frameText"
+        <include
+            layout="@layout/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="2.5dp"
-            android:layout_weight="1"
-            android:background="#0f4c7d"
-            android:gravity="center">
+            android:layout_height="wrap_content"></include>
 
-            <include layout="@layout/framelayout_text"></include>
-        </FrameLayout>
+        <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="2.5dp">
 
             <FrameLayout
-                android:id="@+id/frameSimActive"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:id="@+id/frameText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_margin="2.5dp"
                 android:layout_weight="1"
-                android:background="@android:color/holo_red_light">
+                android:background="#0f4c7d"
+                android:gravity="center">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/simactivateicon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:text="SIM Activate"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-
+                <include layout="@layout/framelayout_text"></include>
             </FrameLayout>
 
-            <FrameLayout
-                android:id="@+id/PortIn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2.5dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="#9b59b6">
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
+                <FrameLayout
+                    android:id="@+id/newInvoice"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    android:background="?attr/colorPrimary" >
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/portlnicon" />
+                <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:text="Port ln"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:padding="2dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text="Sales Invoice"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/newInvoiceTextView"
+                            android:textSize="30sp" />
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:scaleType="centerInside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/newInvoiceTextView"
+                            android:layout_gravity="center"
+                            android:src="@drawable/sales_invoice" />
+                    </android.support.constraint.ConstraintLayout>
 
-            </FrameLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/newDeliveryOrder"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/aloha">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:padding="2dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text="Delivery Order"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/newDeliveryOrderTextView"
+                            android:textSize="30sp" />
+
+                        <ImageView
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:scaleType="centerInside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/newDeliveryOrderTextView"
+                            android:layout_gravity="center"
+                            android:src="@drawable/delivery_order" />
+                    </android.support.constraint.ConstraintLayout>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/newPurchase"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/purple">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:padding="2dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text="Purchase Invoice"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/newPurchaseTextView"
+                            android:textSize="30sp" />
+
+                        <ImageView
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:scaleType="centerInside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/newPurchaseTextView"
+                            android:layout_gravity="center"
+                            android:src="@drawable/purchase_invoice" />
+                    </android.support.constraint.ConstraintLayout>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/showSalesReturn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_blue_bright">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:padding="2dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text="Sales Return"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/salesReturnTextView"
+                            android:textSize="30sp" />
+
+                        <ImageView
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:scaleType="centerInside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/salesReturnTextView"
+                            android:layout_gravity="center"
+                            android:src="@drawable/salesreturns"
+                            tools:layout_editor_absoluteX="-18dp" />
+                    </android.support.constraint.ConstraintLayout>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <FrameLayout
+                    android:id="@+id/showNewCustomer"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/dusty_sky">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:padding="2dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text="New Customer"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/newCustomerTextView"
+                            android:textSize="30sp" />
+
+                        <ImageView
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:scaleType="centerInside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/newCustomerTextView"
+                            android:layout_gravity="center"
+                            android:src="@drawable/new_customer1" />
+                    </android.support.constraint.ConstraintLayout>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/showNewSupplier"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@color/orange">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:padding="2dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text="New Supplier"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/newSupplierTextView"
+                            android:textSize="30sp" />
+
+                        <ImageView
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:scaleType="centerInside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/newSupplierTextView"
+                            android:layout_gravity="center"
+                            android:src="@drawable/new_supplier1" />
+                    </android.support.constraint.ConstraintLayout>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/showInvoicePayment"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_green_light">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:padding="2dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text="Payments"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/invoicePaymentTextView"
+                            android:textSize="30sp" />
+
+                        <ImageView
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:scaleType="centerInside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/invoicePaymentTextView"
+                            android:layout_gravity="center"
+                            android:src="@drawable/payments" />
+                    </android.support.constraint.ConstraintLayout>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/showPurchaseReturn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2.5dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_red_light">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:padding="2dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text="Purchase Return"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/purchaseReturnTextView"
+                            android:textSize="30sp" />
+
+                        <ImageView
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:scaleType="centerInside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/purchaseReturnTextView"
+                            android:layout_gravity="center"
+                            android:src="@drawable/debit_note1" />
+                    </android.support.constraint.ConstraintLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <!--<FrameLayout-->
+            <!--android:id="@+id/framedateAndTime"-->
+            <!--android:layout_width="150dp"-->
+            <!--android:layout_height="145dp"-->
+            <!--android:layout_below="@+id/newInvoice"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:background="#bdc3c7"-->
+            <!--android:visibility="gone">-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/imgDateAndTime"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_marginTop="40dp"-->
+            <!--android:padding="5dp"-->
+            <!--android:src="@drawable/time" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/dateAndTime"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_marginTop="100dp"-->
+            <!--android:padding="5dp"-->
+            <!--android:text="Date And Time"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:textSize="15sp" />-->
+            <!--</FrameLayout>-->
+
+            <!--<FrameLayout-->
+            <!--android:id="@+id/frameSimReplacement"-->
+            <!--android:layout_width="220dp"-->
+
+            <!--android:layout_height="145dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_below="@+id/newInvoice"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:layout_toRightOf="@+id/framedateAndTime"-->
+            <!--android:background="#2ecc71"-->
+            <!--android:visibility="gone">-->
+
+            <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:src="@drawable/simreplacementicon" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginTop="45dp"-->
+            <!--android:padding="10dp"-->
+            <!--android:text="Sim Replacement"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:textSize="15sp" />-->
+
+            <!--</FrameLayout>-->
+
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <FrameLayout
-                android:id="@+id/frameTopupBalance"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2.5dp"
-                android:layout_weight="1"
-                android:background="#34495e">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/topupbalanceicon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:text="Wallet Top Up"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:id="@+id/frameRechargeSim"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2.5dp"
-                android:layout_weight="1"
-                android:background="#f39c12">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/rechargesimicon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:text="SIM Recharge"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </FrameLayout>
-
-        </LinearLayout>
-
-        <FrameLayout
-            android:id="@+id/framedateAndTime"
-            android:layout_width="150dp"
-            android:layout_height="145dp"
-            android:layout_below="@+id/frameSimActive"
-            android:layout_margin="5dp"
-            android:background="#bdc3c7"
-            android:visibility="gone">
-
-            <ImageView
-                android:id="@+id/imgDateAndTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="40dp"
-                android:padding="5dp"
-                android:src="@drawable/time" />
-
-            <TextView
-                android:id="@+id/dateAndTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="100dp"
-                android:padding="5dp"
-                android:text="Date And Time"
-                android:textColor="@android:color/white"
-                android:textSize="15sp" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/frameSimReplacement"
-            android:layout_width="220dp"
-
-            android:layout_height="145dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/frameSimActive"
-            android:layout_margin="5dp"
-            android:layout_toRightOf="@+id/framedateAndTime"
-            android:background="#2ecc71"
-            android:visibility="gone">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/simreplacementicon" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="45dp"
-                android:padding="10dp"
-                android:text="Sim Replacement"
-                android:textColor="@android:color/white"
-                android:textSize="15sp" />
-
-        </FrameLayout>
-
+        <!--</ScrollView>-->
 
     </LinearLayout>
 
+    <android.support.design.widget.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:id="@+id/design_navigation_view"
+        app:theme="@style/navigationMenuStyle" >
 
-    <!--</ScrollView>-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-</LinearLayout>
+            <android.support.design.widget.NavigationView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:layout_above="@+id/footerLayout"
+                android:id="@+id/menu_navigation_view"
+                app:theme="@style/navigationMenuStyle"
+                app:headerLayout="@layout/nav_header_main"
+                app:menu="@menu/activity_main_drawer" />
+
+            <LinearLayout
+                android:id="@+id/footerLayout"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/versionTextView"
+                    android:text="GSTMadeEasy "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="10dp"
+                        android:text="Powered by "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:onClick="openVirtuzoIn"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorAccent"
+                        android:text="@string/virtuzoTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

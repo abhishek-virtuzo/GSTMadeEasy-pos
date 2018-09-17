@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Activate My Sim</string>
+    <string name="app_name">GSTMadeEasy</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
     <string name="username">User Name</string>
-    <string name="pass">Password</string>
+    <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="dashboard">DashBoard</string>
     <string name="signin">Sign In</string>
@@ -18,4 +18,69 @@
         <item> 400</item>
     </string-array>
     <string name="title_activity_new_topup">New Topup</string>
+    <string name="refresh_menu_bar">Refresh</string>
+    <string name="tab_code">Tab Code</string>
+    <string name="business_id">Business ID</string>
+    <string name="product_name">Product Name</string>
+    <string name="usb_msg_getpermission">obtaining USB device access permissions success</string>
+    <string name="usb_msg_conn_state">USB device can not access, please re-connect</string>
+
+    <string name="Rs">₹</string>
+    <string name="open">OPEN</string>
+    <string name="close">CLOSE</string>
+    <string name="terms_and_conditions_button_text"><![CDATA[T&C]]></string>
+
+    <string-array name="payment_method_string">
+        <item>--Choose payment mode--</item>
+        <item>Cash</item>
+        <item>Credit Card</item>
+        <item>Debit Card</item>
+        <item>E-voucher</item>
+        <item>Credit Note</item>
+
+    </string-array>
+
+    <string-array name="india_states">
+        <item>Choose State</item>
+        <item>Andaman and Nicobar Islands</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chandigarh</item>
+        <item>Chhattisgarh</item>
+        <item>Dadra and Nagar Haveli</item>
+        <item>Daman and Diu</item>
+        <item>Delhi</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Lakshadweep</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Orissa</item>
+        <item>Pondicherry</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttaranchal</item>
+        <item>Uttar Pradesh</item>
+        <item>West Bengal</item>
+    </string-array>
+
+    <string name="virtuzoTitle"><u>Virtuzo</u></string>
+    <string name="composite_scheme_receipt_heading">"Composition taxable person, not eligible to collect tax on supplies"</string>
+
 </resources>

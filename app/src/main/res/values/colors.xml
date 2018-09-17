@@ -3,12 +3,20 @@
     <color name="colorPrimaryDark">#1f3573</color>
     <color name="colorPrimary">#1673bd</color>
     <color name="colorAccent">#3456b9</color>
+    <color name="grey">#ccc</color>
+    <color name="black">#000</color>
     <color name="white">#fff</color>
     <color name="background">#1673BD</color>
     <color name="black_semi_transparent">#B2000000</color>
     <color name="my_spinner_text_color">#000</color>
     <color name="themeColor">#1673bd</color>
     <color name="circular">#0f4c7d</color>
-
+    <color name="button_color">#547FC1</color>
+    <color name="yellow_button">#FBC02D</color>
+    <color name="holo_green_dark">#ff669900</color>
+    <color name="purple">#9b59b6</color>
+    <color name="aloha">#1abc9c</color>
+    <color name="dusty_sky">#95a5a6</color>
+    <color name="orange">#f39c12</color>
 
 </resources>
