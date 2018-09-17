@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="e-way bill"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:textSize="25sp"
+                    android:text="Reason"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:textSize="25sp"
+                    android:text="Eway Bill Number"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:textSize="25sp"
+                    android:text="MTR Number"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:textSize="25sp"
+                    android:text="Vehicle Number"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/reasonSpinner"
+                android:hint="Reason"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:background="@drawable/invoicepaymentlayout_bg"
+                android:layout_marginBottom="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/ewayBillNumberEditText"
+                android:hint="Eway Bill Number"
+                android:gravity="center"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:background="@drawable/invoicepaymentlayout_bg"
+                android:layout_marginBottom="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/documentNumberEditText"
+                android:hint="MTR Number"
+                android:gravity="center"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:background="@drawable/invoicepaymentlayout_bg"
+                android:layout_marginBottom="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/vehicleNumberEditText"
+                android:hint="Vehicle Number"
+                android:gravity="center"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:background="@drawable/invoicepaymentlayout_bg"
+                android:layout_marginBottom="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Cancel"
+            android:id="@+id/cancelClick"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:layout_marginRight="10dp"
+            android:background="@color/common_signin_btn_default_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:text="Save"
+            android:id="@+id/saveClick"
+            android:textSize="25sp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:background="#2ecc71"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

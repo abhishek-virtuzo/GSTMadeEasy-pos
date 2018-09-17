@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp" >
+
+    <TextView
+        android:id="@+id/productNameTitle"
+        android:text="Product Name"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="28sp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:background="@drawable/layout_bg"
+            android:layout_marginTop="5dp"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center"
+                    android:paddingLeft="10dp"
+                    android:text="Quantity Sold"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/originalQuantitySold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="..dfsdf."
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:gravity="left|center"
+                    android:text="Unit Price"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/originalUnitPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="..dfsdf."
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center"
+                    android:text="Tax @"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/originalTaxRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="..dfsdf."
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/layout_bg"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="5dp"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingTop="5dp"
+                android:layout_weight="1">
+
+                <!--<android.support.v7.widget.AppCompatCheckBox-->
+                <!--android:id="@+id/checkbox_qty_return"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:gravity="left|center"
+                    android:text="Quantity Return"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/returnQuantityEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0"
+                    android:background="@drawable/invoicepaymentlayout_bg"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:textIsSelectable="false"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingTop="5dp"
+                android:layout_weight="1">
+
+                <!--<android.support.v7.widget.AppCompatCheckBox-->
+                <!--android:id="@+id/checkbox_new_price"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:gravity="left|center"
+                    android:text="New Unit Price"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/returnUnitPriceEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0"
+                    android:background="@drawable/invoicepaymentlayout_bg"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:id="@+id/changePriceOnlyCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="5dp"
+                        android:gravity="left|center"
+                        android:text="Change Price Only"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:gravity="center"-->
+                <!--android:paddingTop="5dp"-->
+                <!--android:layout_weight="1">-->
+                <!---->
+                <!--<CheckBox-->
+                    <!--android:id="@+id/checkBoxChangePriceOmly"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!---->
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:paddingLeft="5dp"-->
+                    <!--android:gravity="left|center"-->
+                    <!--android:text="Change Price only"-->
+                    <!--android:layout_weight="1"/>-->
+
+
+            <!--</LinearLayout>-->
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginRight="50dp"-->
+        <!--android:layout_marginLeft="50dp" >-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Credit Amount"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_weight="1"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/finalCreditAmount"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="..dfsdf."-->
+            <!--android:layout_weight="1" />-->
+
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp" >
+
+        <Button
+            android:id="@+id/okButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CANCEL"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:orientation="vertical"-->
+<!--android:paddingRight="20dp"-->
+<!--android:paddingLeft="20dp" >-->
+
+<!--<TextView-->
+    <!--android:id="@+id/productNameTitle"-->
+    <!--android:text="Product Name"-->
+    <!--android:textStyle="bold"-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="25sp"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content" />-->
+
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:gravity="center" >-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_weight="1">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="left|center"-->
+            <!--android:text="Quatity Sold"-->
+            <!--android:layout_weight="1"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/originalQuantitySold"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="right"-->
+            <!--android:text="..dfsdf."-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:paddingRight="5dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_weight="1">-->
+
+        <!--&lt;!&ndash;<android.support.v7.widget.AppCompatCheckBox&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/checkbox_qty_return"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content" />&ndash;&gt;-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="left|center"-->
+            <!--android:text="Quatity Return"-->
+            <!--android:layout_weight="1"/>-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/returnQuantityEditText"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="Return Quantity"-->
+            <!--android:background="@drawable/invoicepaymentlayout_bg"-->
+            <!--android:layout_weight="1"-->
+            <!--android:inputType="number"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:paddingRight="5dp"-->
+            <!--android:textIsSelectable="false"/>-->
+
+    <!--</LinearLayout>-->
+
+<!--</LinearLayout>-->
+
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_marginTop="5dp" >-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_weight="1">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="left|center"-->
+            <!--android:text="Unit Price"-->
+            <!--android:layout_weight="1"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/originalUnitPrice"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="right"-->
+            <!--android:text="..dfsdf."-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:paddingRight="5dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_weight="1">-->
+
+        <!--&lt;!&ndash;<android.support.v7.widget.AppCompatCheckBox&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/checkbox_new_price"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content" />&ndash;&gt;-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="left|center"-->
+            <!--android:text="New Unit Price"-->
+            <!--android:layout_weight="1"/>-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/returnUnitPriceEditText"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="new price"-->
+            <!--android:background="@drawable/invoicepaymentlayout_bg"-->
+            <!--android:layout_weight="1"-->
+            <!--android:inputType="number"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:paddingRight="5dp" />-->
+
+    <!--</LinearLayout>-->
+
+<!--</LinearLayout>-->
+
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_marginTop="5dp" >-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_weight="1" >-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="left|center"-->
+            <!--android:text="Tax @"-->
+            <!--android:layout_weight="2"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/originalTaxRate"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:layout_weight="2"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/originalTaxAmount"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="right"-->
+            <!--android:text="..dfsdf."-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:paddingRight="5dp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_weight="1">-->
+
+        <!--&lt;!&ndash;<android.support.v7.widget.AppCompatCheckBox&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/checkbox_new_tax"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content" />&ndash;&gt;-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="left|center"-->
+            <!--android:text="New Tax @"-->
+            <!--android:layout_weight="2"/>-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/returnTaxRateEditText"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:layout_weight="2"-->
+            <!--android:textIsSelectable="false"-->
+            <!--android:background="@drawable/invoicepaymentlayout_bg"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:paddingRight="5dp"-->
+            <!--android:inputType="number"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/returnTaxAmount"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="right"-->
+            <!--android:hint="new rate"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:paddingRight="5dp"-->
+            <!--android:layout_weight="1.5" />-->
+
+    <!--</LinearLayout>-->
+
+<!--</LinearLayout>-->
+
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:layout_marginRight="50dp"-->
+    <!--android:layout_marginLeft="50dp" >-->
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Credit Amount"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_weight="1"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/finalCreditAmount"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+
+        <!--android:text="..dfsdf."-->
+        <!--android:layout_weight="1" />-->
+
+<!--</LinearLayout>-->
+
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_margin="20dp" >-->
+
+    <!--<Button-->
+        <!--android:id="@+id/okButton"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="OK"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginLeft="10dp" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/cancelButton"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="CANCEL"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginLeft="10dp" />-->
+
+<!--</LinearLayout>-->
+
+<!--</LinearLayout>-->

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.virtuzo.abhishek.Views.Activity.NewFormActivity.NewDebitNoteActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center|top">
+
+        <include
+            android:id="@+id/toolbar_new_credit_note"
+            layout="@layout/toolbar_back_and_keyboard"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_width="match_parent" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center|top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/chooseSupplierButton"
+                android:onClick="chooseSupplierButtonClick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#023258"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="Choose Supplier"
+                android:layout_margin="15dp"
+                android:textAllCaps="false"
+                android:padding="16dp"
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/amountLinearLayout"
+                android:orientation="vertical"
+                android:paddingLeft="100dp"
+                android:paddingRight="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="20dp"
+                    android:layout_margin="5dp"
+                    android:id="@+id/supplierDetailsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_margin="5dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="20dp"
+                        android:text="Enter Amount : "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/amountEditText"
+                        android:textSize="20dp"
+                        android:hint="0          "
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:inputType="numberDecimal"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:background="@drawable/blue_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20dp"
+                    android:text="Reason : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/reasonEditText"
+                    android:padding="6dp"
+                    android:gravity="top"
+                    android:layout_margin="5dp"
+                    android:inputType="textMultiLine"
+                    android:minLines="5"
+                    android:background="@drawable/invoicepaymentlayout_bg"
+                    android:selectAllOnFocus="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:onClick="onSaveButtonClick"
+                        android:id="@+id/saveButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:background="@drawable/green_btn_bg"
+                        android:text="Save"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

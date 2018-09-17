@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center"
+        android:onClick="backButtonPressed">
+
+        <ImageButton
+            android:onClick="backButtonPressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/go_back_left_arrow" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/actionBarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="32dp"
+        android:gravity="center"
+        android:text="Title"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/invoiceNumberTextViewInSalesReturn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:gravity="center|right"
+        android:textColor="@android:color/white"
+        android:text="Invoice Number"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</android.support.v7.widget.Toolbar>

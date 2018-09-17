@@ -1,0 +1,48 @@
+05-07-2018
+GetGroupProducts API Class
+Include GetGroupProducts API in sync process
+Mark product as group product if there's any product item is added in group product items table(during sync process)
+Store GroupProductList into database
+
+06-07-2018
+Create Settings screen in Wifi screen.
+Error logs option in Settings screen.
+Show/Hide Dashboard details option in Settings screen.
+E-way bill generation should have a cancel option, incase a dealer has accidentaly clicked on YES button for E-way bill generation and wants to go back on the previous page.
+Group Product Testing code - Dummy Group Product and hardcode tax not to be free (Rollbacked).
+Change Settings screen layout (Logs button on toolbar and layout in middle).
+
+07-07-2018
+Goto "Sales Return", then "New Credit Note", then "Choose Customer", on clicking the add button, app is crashing.
+Same is with "Purchase Return".
+
+23-07-2018
+Create GetLogo ApiClass. Include GetLogo in sync process. Update logo url as well as image stored in device storage after sync process.
+Refresh logo when screen is resumed.
+Rename MRP as Sales Price(Tax Inclusive)
+Update APK version 1.0.11
+
+01-08-2018
+Change Choose Brand dropdown to Choose Brand popup with search bar option
+Change all the dependencies from dropdown to popup for "Choose Brand".
+
+02-08-2018
+Update APK version 1.0.12
+
+20-08-2018
+Combo Individual products will have their independent tax percent
+Update APK version 1.0.13
+
+05-09-2018
+Save Draft
+Show Draft List - In progress
+
+06-09-2018
+Save As Draft - Done
+Remove a draft when invoice confirmed
+Change in drafts list layout
+
+13-09-2018
+Update Draft (Remove old and add new one)
+Limit to no. of drafts
+Remove draft option

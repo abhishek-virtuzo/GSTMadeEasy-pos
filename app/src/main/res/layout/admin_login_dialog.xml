@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:layout_margin="10dp"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:textSize="50sp"
+        android:text="Admin Portal"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Remove Kiosk"
+        android:id="@+id/removeKioskButton"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/blue_btn_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Go To Settings"
+        android:id="@+id/goToSettingsButton"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/blue_btn_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Back"
+        android:id="@+id/backButton"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:layout_weight="1"
+        android:background="@drawable/blue_btn_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

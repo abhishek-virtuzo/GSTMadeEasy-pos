@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal"
+    android:id="@+id/toolbar_head">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:gravity="center"
+            android:onClick="backButtonPressed"
+            android:id="@+id/backButtonLinearLayout">
+
+            <ImageButton
+                android:onClick="backButtonPressed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/go_back_left_arrow" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/actionBarTitle"
+            android:layout_toRightOf="@+id/backButtonLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:text="Create New Credit Note"
+            android:id="@+id/createNewCreditNote"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

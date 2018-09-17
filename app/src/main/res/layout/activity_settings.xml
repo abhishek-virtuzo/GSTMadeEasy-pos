@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".Views.Activity.Others.SettingsActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_settings"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent" />
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:rowCount="1"
+        android:columnCount="2">
+
+        <TextView
+            android:text="Dashboard Details : "
+            android:textColor="#000"
+            android:layout_marginRight="20dp"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical" />
+
+        <Switch
+            android:id="@+id/dashboardDetailsSwitch"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:textOn="SHOW"
+            android:textOff="HIDE"
+            android:layout_gravity="center_vertical" />
+
+    </GridLayout>
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="onErrorLogsClick"-->
+        <!--android:text="View Error Logs"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:textColor="#fff"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:paddingRight="10dp"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:layout_gravity="center"/>-->
+
+</LinearLayout>

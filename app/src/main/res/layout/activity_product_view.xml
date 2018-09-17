@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_back_and_keyboard"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_width="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/productCodeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Code"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/productNameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Name"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/productDescriptionLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Description"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/brandLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Brand"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/categoryLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Category"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/subCategoryLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sub Category"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/barCodeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BarCode"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+
+                    />
+                <TextView
+                    android:id="@+id/taxLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TAX (%)"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/salesPriceLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sales Price(Tax Exclusive)"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/unitLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unit"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/hscCodeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HSN Code"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/productCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Code"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Name"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/productDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Description"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Brand"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Category"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/subCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sub Category"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/barCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BarCode"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/tax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tax"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/salesPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sales Price"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unit"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/hscCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HSN Code"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/edit_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="EDIT"
+                android:onClick="onEdit"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <Button
+                android:id="@+id/ok_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:onClick="onOK"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

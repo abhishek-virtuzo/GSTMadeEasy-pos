@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.Activity.ViewActivity.SupplierViewActivity">
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_back_and_keyboard"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_width="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/entityTypeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/entityNameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Name"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/contactPersonLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Person"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/contactNumberLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Number"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/contactLandlineNumberLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Landline Number"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/emailIdLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Email Id"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+
+                    />
+                <TextView
+                    android:id="@+id/gstCategoryLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GST Category"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/gstNumberLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GST Number"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/addressLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/stateLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="State"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/cityLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="City"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/pinCodeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pincode"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/entity_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/entity_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/contact_person"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/contact_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:id="@+id/contact_landline_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/email_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/gst_category"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/gst_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/pincode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entity Type"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    />
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/edit_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="EDIT"
+                android:onClick="onEdit"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <Button
+                android:id="@+id/ok_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:onClick="onOK"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:gravity="center"
+            android:id="@+id/backButtonLinearLayout"
+            android:onClick="backButtonPressed">
+
+            <ImageButton
+                android:onClick="backButtonPressed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/go_back_left_arrow" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/actionBarTitle"
+            android:layout_toRightOf="@+id/backButtonLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:text="Size : "
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:layout_toLeftOf="@+id/lastSyncedTextView"
+            android:textStyle="bold" />
+
+        <!--android:layout_toLeftOf="@+id/refreshButton"-->
+        <TextView
+            android:id="@+id/lastSyncedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="20dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:layout_toLeftOf="@+id/refreshButton"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/refreshButton"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:gravity="center"
+            android:layout_toLeftOf="@+id/switchKeyboardButton"
+            android:onClick="refreshButtonPressed">
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:onClick="refreshButtonPressed"
+                android:background="@android:drawable/stat_notify_sync_noanim" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/switchKeyboardButton"
+            android:onClick = "switchKeyboardButton"
+            android:background="@drawable/ic_keyboard_white_48dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="72dp"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

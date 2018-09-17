@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.virtuzo.abhishek.Views.Activity.NewFormActivity.NewDeliveryOrderActivity">
+
+    <LinearLayout
+        android:background="#e8e7e7"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:id="@+id/productListLayoutInNewInvoice"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="2">
+
+            <include
+                android:id="@+id/toolbar_in_new_delivery_order"
+                layout="@layout/toolbar_in_new_delivery_order"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
+
+            <LinearLayout
+                android:id="@+id/searchProductListLinearLayoutInNewInvoice"
+                android:layout_below="@+id/toolbar_in_new_delivery_order"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp"
+                    android:layout_weight="1"
+                    android:id="@+id/searchProductListSearchViewInNewInvoice" />
+
+                <Button
+                    android:onClick = "onSearchButtonClick"
+                    android:padding="10dp"
+                    android:text="Search"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/blue_btn_bg"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <Button
+                    android:id="@+id/switchKeyboardButton"
+                    android:onClick = "switchKeyboardButton"
+                    android:background="@drawable/ic_keyboard_black_48dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_below = "@id/searchProductListLinearLayoutInNewInvoice"
+                android:background="@color/aloha"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/productListInNewInvoiceRecyclerView"
+                android:layout_below = "@id/searchProductListLinearLayoutInNewInvoice"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/aloha" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/customerInvoiceInNewInvoiceDateLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/customerButtonForNewInvoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#023258"
+                    android:textColor="@color/white"
+                    android:gravity="left|center_vertical"
+                    android:text="Choose Customer"
+                    android:layout_margin="5dp"
+                    android:textAllCaps="false"
+                    android:padding="16dp"
+                    android:textSize="20dp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/invoiceDatePickerButtonInNewInvoice"
+                        android:layout_weight="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#023258"
+                        android:textColor="@color/white"
+                        android:gravity="left|center_vertical"
+                        android:text="Invoice Date"
+                        android:layout_margin="5dp"
+                        android:textAllCaps="false"
+                        android:padding="16dp"
+                        android:textSize="20dp" />
+
+                    <Button
+                        android:onClick="addressButtonClick"
+                        android:layout_weight="5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#023258"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="Address"
+                        android:layout_margin="5dp"
+                        android:textAllCaps="false"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/aloha" />
+
+                <TextView
+                    android:id="@+id/productSelectedTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Products Selected (0)" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/productsSelectedInNewInvoiceRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_above="@+id/confirmButtonInNewInvoice"
+                    android:layout_margin="10dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <Button
+                    android:id="@+id/confirmButtonInNewInvoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_alignParentBottom="true"
+                    android:onClick="onConfirmButtom"
+                    android:background="#2ecc71"
+                    android:text="Confirm"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+                <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_above="@id/confirmButtonInNewInvoice"-->
+                <!--android:background="@android:color/holo_blue_dark" />-->
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
