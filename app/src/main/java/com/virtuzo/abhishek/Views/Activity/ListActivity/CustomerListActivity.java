@@ -139,6 +139,8 @@ public class CustomerListActivity extends AppCompatActivity implements SearchVie
             intentShowCustomerList.putExtra(MyFunctions.CLASS_NAME, MyFunctions.CLASS_DASHBOARD);
         } else if(callingActivity.equals(MyFunctions.CLASS_NEW_INVOICE)){
             intentShowCustomerList.putExtra(MyFunctions.CLASS_NAME, MyFunctions.CLASS_NEW_INVOICE);
+        } else if(callingActivity.equals(MyFunctions.CLASS_DELIVERY_ORDER)){
+            intentShowCustomerList.putExtra(MyFunctions.CLASS_NAME, MyFunctions.CLASS_DELIVERY_ORDER);
         } else if(callingActivity.equals(MyFunctions.CLASS_NEW_CREDITNOTE)) {
             intentShowCustomerList.putExtra(MyFunctions.CLASS_NAME, MyFunctions.CLASS_NEW_CREDITNOTE);
         }

@@ -459,7 +459,8 @@ public class NewCustomerActivity extends AppCompatActivity  {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
                     if (callingActivity.equals(MyFunctions.CLASS_NEW_INVOICE)
-                            || callingActivity.equals(MyFunctions.CLASS_NEW_CREDITNOTE)) {
+                            || callingActivity.equals(MyFunctions.CLASS_NEW_CREDITNOTE)
+                            || callingActivity.equals(MyFunctions.CLASS_DELIVERY_ORDER)) {
                         Gson gson = new Gson();
                         String json = gson.toJson(newCustomer);
 
